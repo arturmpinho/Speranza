@@ -117,6 +117,9 @@ As a user, I want to:
 ![Mokup Image](wireframes/speranza_fonts.png)
 
 #### Icons
+Throughout out the website, I will be using icons provided by [FontAwesome](https://fontawesome.com/ "FontAwesome").
+
+The icons used are self-explanatory and aid the navigation of the user, bringing an intuitive imagery to the website.
 
 #### Colors
 ![Mokup Image](wireframes/speranza_color_palette.png)
