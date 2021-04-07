@@ -119,6 +119,7 @@ As a user, I want to:
 #### Icons
 
 #### Colors
+![Mokup Image](wireframes/speranza_color_palette.png)
 
 #### Structure
 
