@@ -114,12 +114,7 @@ As a user, I want to:
 
 ### **Design Choices**
 #### Fonts
-
-##### Main Headings
-
-##### Sub-headings/stand-out text
-
-##### Overall content
+![Mokup Image](wireframes/speranza_fonts.png)
 
 #### Icons
 
