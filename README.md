@@ -1,4 +1,4 @@
-# **Coffee Insider**
+# **![Logo](assets/images/speranza_logo.png) SPERANZA**
 
 ![Mokup Image](wireframes/mockup.png)
 
