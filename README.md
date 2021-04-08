@@ -108,7 +108,11 @@ As a user, I want to:
 * Call-to-actions functioning properly.
 
 #### **Expectations**
-* 
+* Updated and clear information about the clinical trials.
+* Links must be working properly to reach the target with any setbacks.
+* External links must open in a new tab.
+* Easy interaction with other users.
+* Proper feedback handling an error.
 
 [[Back to top]](#table-of-contents)
 
@@ -116,7 +120,13 @@ As a user, I want to:
 
 ### **Company Goals**
 
-* 
+* Provide healthcare patients, their family and firends, with the necessary information about clinical trials working with immunotherapy.
+
+* Give doctors an easy way to look for potential clinical trials to recommend their patients.
+
+* Advocate online for the immunotherapy approach as the future of medicine.
+
+* Provide a safe space for users to share their stories and experiences in regard to a specific clinical trial.
 
 
 [[Back to top]](#table-of-contents)
