@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route('/get_trials')
 def get_trials():
     trials = mongo.db.trials.find()
-    return render_template('base.html', trials=trials)
+    return render_template('trials.html', trials=trials)
 
 
 if __name__ == "__main__":
