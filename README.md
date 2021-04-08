@@ -81,12 +81,16 @@ On top of this, provide the any user to share their stories about any given clin
 
 ### **User Goals and Stories**
 #### **Goals**
-As a user I aim for:
+As a user my goals are:
 * 
 
 #### **Stories**
 As a user, I want to:
-* 
+* Get a brief introduction about what is immunotherapy.
+* Access the most recent clinical trials available regarding immunotherapy.
+* Shortlist the most interesting clinical trials into my dashboard.
+* Share my opinion and see other users comments concerning a specific clinical trial.
+* Access additional info about a certain clinical trial such as: 'recruitment status', 'study phase', 'gender' requirements, amongst others.
 
 [[Back to top]](#table-of-contents)
 
