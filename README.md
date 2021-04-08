@@ -147,6 +147,35 @@ The icons used are self-explanatory and aid the navigation of the user, bringing
 
 #### Structure
 
+The structure of this website will be quite simple as the main focus is on the data handling. Therefore, the website will consist of mainly 3 pages, the Landing Page, the Clinical Trials and the User's Dashboard page.
+
+##### Navigation bar and Footer
+Throuhgout the entire website, the user will constantly have access to the Navigation bar, displaying according to the need the necessary sections. 
+
+Concerning the footer, it will display some contact information and any other less relevant content.
+
+##### Landing Page
+The Landing page will showcase the immunotherapy as the future of medecine with a brief introduction. Also, an inspirational sentence will give the user the proper perception of the webpage intent.
+
+Below, the user will be able to see the most recent clinical trials, but without accessing all the details. If the user wants to see more details, they will have to properly register in order to acess the entire set of clinical trials and the corresponding details.
+
+Also, on top of the landing page, considering the recurrent users, two call-to-action buttons will be displayed to improve the navigation.
+
+##### User's authentication
+The user's authentication method used on this website is based on the corresponding lesson of the [Code Institute](https://codeinstitute.net/ "Code Institue") Full Stack Software Development Course.
+
+
+##### Clinical Trials
+After a user is registered and logged in, it will have full access to the entire set of clinical trials, powered by a search feature in order to easily find the most suitable clinical trial for its needs.
+
+All the clinical trials will be displayed as cards that will include an icon to shortlist the clinical trial or a trash bin icon if the user wants to remove it from through this page and not through its own dashboard.
+
+##### User's Dashboard
+The user's dashboard will only display the shorlisted clinical trials, including as well the search feature in case it is needed.
+
+##### Comments Sections
+The comments section will only be displayd when the user is logged in, and will be available through a modal where all the comments for any given clinical trial will be displayed, sorted by date (newest first).
+
 [[Back to top]](#table-of-contents)
 
 ---
