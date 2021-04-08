@@ -81,8 +81,11 @@ On top of this, provide the any user to share their stories about any given clin
 
 ### **User Goals and Stories**
 #### **Goals**
-As a user my goals are:
-* 
+As a user I aim for:
+* A simple and intuitive website.
+* Easy navigation across pages.
+* Visually attractive and accurate information.
+* Appealing call-to-actions.
 
 #### **Stories**
 As a user, I want to:
