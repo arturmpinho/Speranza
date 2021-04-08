@@ -101,7 +101,11 @@ As a user, I want to:
 
 ### **User Requirements and Expectations**
 #### **Requirements**
-* 
+* Easy navigation.
+* Reliable information.
+* Good responsiveness across multiple devices and browsers.
+* Immediate feedback on data inputs and/or submissions.
+* Call-to-actions functioning properly.
 
 #### **Expectations**
 * 
