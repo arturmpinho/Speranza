@@ -1,0 +1,16 @@
+html {
+    font-size: 62.5%;
+    position: relative;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navigation Bar */
+.navbar{
+    background-color: #556E71;
+    color: #FCFCFA;
+    text-decoration: none;
+}
