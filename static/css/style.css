@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel&family=Open+Sans+Condensed:wght@700&family=PT+Sans+Caption&display=swap');
+
 html {
     font-size: 62.5%;
     position: relative;
+}
+
+body{
+    font-family: "Martel", sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.3rem;
 }
 
 a, a:hover, a:focus, a:active {
@@ -13,4 +21,8 @@ a, a:hover, a:focus, a:active {
     background-color: #556E71;
     color: #FCFCFA;
     text-decoration: none;
+}
+
+.navbar-brand{
+    font-size: 5rem;
 }
