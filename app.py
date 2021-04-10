@@ -27,14 +27,19 @@ dir(client)
 
 result = client.trials.searchTrials(q='immunotherapy&cancer').result()
 
-print(result)
-
 
 @app.route('/')
-@app.route('/get_trials')
-def get_trials():
+def home():
+    """
+    Function to load the landing page
+    """
+    return render_template('pages/home.html')
+
+
+@app.route('/my_trials')
+def my_trials():
     trials = mongo.db.trials.find()
-    return render_template('pages/trials.html', trials=trials)
+    return render_template('pages/mytrials.html', trials=trials)
 
 
 if __name__ == "__main__":

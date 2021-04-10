@@ -9,11 +9,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
         <a class="nav-link" href="#">Register</a>
         <a class="nav-link" href="#">Log In</a>
         <a class="nav-link" href="#">Clinical Trials</a>
-        <a class="nav-link" href="#">My Trials</a>
+        <a class="nav-link" href="{{ url_for('my_trials') }}">My Trials</a>
         <a class="nav-link" href="#">Log Out</a>
       </div>
     </div>

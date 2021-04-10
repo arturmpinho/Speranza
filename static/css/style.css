@@ -26,3 +26,13 @@ a, a:hover, a:focus, a:active {
 .navbar-brand{
     font-size: 5rem;
 }
+
+/* Hero Image */
+#hero-img{
+    background: url('https://source.unsplash.com/collection/61510941/1600x900');
+    height: 70vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
