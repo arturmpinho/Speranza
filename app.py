@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from bravado.client import SwaggerClient
 if os.path.exists("env.py"):
     import env
 
@@ -15,6 +16,18 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
+
+
+# Creates an instance of a Swagger client
+OPENTRIALS_API_SPEC = (
+    'https://api.opentrials.net/v1/swagger.yaml')
+config = {'use_models': False}
+client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
+dir(client)
+
+result = client.trials.searchTrials(q='immunotherapy&cancer').result()
+
+print(result)
 
 
 @app.route('/')
