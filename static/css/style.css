@@ -24,15 +24,35 @@ a, a:hover, a:focus, a:active {
 }
 
 .navbar-brand{
-    font-size: 5rem;
+    font-size: min(max(3rem, 7vw), 5rem);
 }
 
-/* Hero Image */
+/* Homepage Hero Image */
 #hero-img{
-    background: url('https://source.unsplash.com/collection/61510941/1600x900');
+    background: url('https://source.unsplash.com/yg1Zayn0Few/1600x900');
     height: 70vh;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-position: center;
+}
+
+/* Homepage buttons */
+.homepage-btn{
+    background-color: #556E71;
+    color: #FCFCFA;
+    font-size: 2rem;
+    position: relative;
+    -webkit-transform: translate(60vh);
+    -moz-transform: translate(60vh);
+    -o-transform: translate(60vh);
+    -ms-transform: translate(60vh);
+    transform: translateY(60vh);
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+/* Homepage quote*/
+#homepage-quote{
+    font-size: 2rem;
 }
