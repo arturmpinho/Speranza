@@ -1,0 +1,33 @@
+{% extends "layout/base.html" %}
+{% block content %}
+{% include 'components/navbar.html' %}
+
+
+    <h1>Clinical Trials</h1>
+    {% for trial in trials['items'] %}
+        {{ trial.public_title }}<br>
+        {{ trial.brief_summary }}<br>
+        {{ trial.status }}<br>
+        {{ trial.recruitment_status }}<br>
+        {{ trial.study_phase[0] }}<br>
+
+        {% for t in trial.locations %}
+            {{ t['name'] }}<br>
+        {% endfor %}
+
+        {% for t in trial.persons %}
+            {{ t['name'] }}<br>
+        {% endfor %}
+
+        {% for t in trial.organisations %}
+             {{ t['name'] }}<br>
+        {% endfor %}
+
+        {% for t in trial.records %}
+             {{ t['source_url'] }}<br>
+             {{ t['updated_at'] }}<br>
+        {% endfor %}
+       
+    {% endfor %}
+
+{% endblock %}

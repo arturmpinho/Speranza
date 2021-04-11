@@ -18,22 +18,24 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# Creates an instance of a Swagger client
-OPENTRIALS_API_SPEC = (
-    'https://api.opentrials.net/v1/swagger.yaml')
-config = {'use_models': False}
-client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
-dir(client)
-
-result = client.trials.searchTrials(q='immunotherapy&cancer').result()
-
-
 @app.route('/')
 def home():
     """
     Function to load the landing page
     """
     return render_template('pages/home.html')
+
+
+@app.route('/clinical_trials')
+def clinical_trials():
+    # Creates an instance of a Swagger client
+    OPENTRIALS_API_SPEC = (
+        'https://api.opentrials.net/v1/swagger.yaml')
+    config = {'use_models': False}
+    client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
+    dir(client)
+    trials = client.trials.searchTrials(q='immunotherapy&cancer').result()
+    return render_template('pages/clinical_trials.html', trials=trials)
 
 
 @app.route('/my_trials')
@@ -45,5 +47,5 @@ def my_trials():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
- #switch to False before delivering project
+            # switch to False before delivering project
             debug=True)

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
   <div class="container-fluid p-0">
-    <a class="navbar-brand d-flex align-items-center" href="#">
+    <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
       <img src="{{ url_for('static', filename='images/speranza_logo.png') }}" alt="Speranza logo" width="60" height="60" class="d-inline-block align-text-top">
       <span>SPERANZA</span>
     </a>
@@ -12,7 +12,7 @@
         <a class="nav-link" href="{{ url_for('home') }}">Home</a>
         <a class="nav-link" href="#">Register</a>
         <a class="nav-link" href="#">Log In</a>
-        <a class="nav-link" href="#">Clinical Trials</a>
+        <a class="nav-link" href="{{ url_for('clinical_trials') }}">Clinical Trials</a>
         <a class="nav-link" href="{{ url_for('my_trials') }}">My Trials</a>
         <a class="nav-link" href="#">Log Out</a>
       </div>

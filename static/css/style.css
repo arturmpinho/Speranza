@@ -35,7 +35,7 @@ a, a:hover, a:focus, a:active {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: center;
+    background-position: center top;
 }
 
 /* Homepage buttons */
