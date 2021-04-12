@@ -356,6 +356,7 @@ The comments section will only be displayd when the user is logged in, and will 
 ##### **Bug** #####
 
 ##### **(Potential) Corrections** #####
+https://stackoverflow.com/questions/37270787/uncaught-syntaxerror-failed-to-execute-queryselector-on-document/37271406
 
 [[Back to top]](#table-of-contents)
 

@@ -61,7 +61,7 @@ a, a:hover, a:focus, a:active {
 .btn{
     background-color: #556E71;
     color: #FCFCFA;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 /* Trials Cards */
@@ -70,6 +70,6 @@ a, a:hover, a:focus, a:active {
     height: 25rem;
 }
 
-.card-title, .card-text-intro{
+.card-title, .card-text-info{
     font-weight: 700;
 }
