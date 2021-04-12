@@ -2,32 +2,40 @@
 {% block content %}
 {% include 'components/navbar.html' %}
 
-
     <h1>Clinical Trials</h1>
-    {% for trial in trials['items'] %}
-        {{ trial.public_title }}<br>
-        {{ trial.brief_summary }}<br>
-        {{ trial.status }}<br>
-        {{ trial.recruitment_status }}<br>
-        {{ trial.study_phase[0] }}<br>
 
-        {% for t in trial.locations %}
-            {{ t['name'] }}<br>
-        {% endfor %}
+    <div class="container-fluid">
+        <div class="row">
+            {% for trial in trials['items'] %}
+                <div class="card .col g-5" style="width: 35rem;">
+                    <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
+                    <div class="card-body d-flex flex-column">
+                    <h4 class="card-title mb-5">{{ trial.public_title }}</h4>
+                    <p class="card-text"><span class="card-text-intro">Country:</span>  {% for t in trial.locations %}
+                                            {{ t['name'] }}
+                                        {% endfor %}</p>
+                    <p class="card-text"><span class="card-text-intro">Status:</span> {{ trial.status }}</p>
+                    <p class="card-text"><span class="card-text-intro">Recruitment Status:</span> {{ trial.status }}</p>
+                    <p class="card-text"><span class="card-text-intro">Study Phase:</span> {{ trial.study_phase[0] }}</p>
+                    <a href="#" class="btn card-btn mt-auto"><i class="fas fa-glasses"></i> Check this trial</a>
+                    </div>
+                </div>
+                        <!-- {{ trial.brief_summary }}<br>
+                        {{ trial.recruitment_status }}<br>
+                        {% for t in trial.persons %}
+                            {{ t['name'] }}<br>
+                        {% endfor %}
 
-        {% for t in trial.persons %}
-            {{ t['name'] }}<br>
-        {% endfor %}
+                        {% for t in trial.organisations %}
+                            {{ t['name'] }}<br>
+                        {% endfor %}
 
-        {% for t in trial.organisations %}
-             {{ t['name'] }}<br>
-        {% endfor %}
-
-        {% for t in trial.records %}
-             {{ t['source_url'] }}<br>
-             {{ t['updated_at'] }}<br>
-        {% endfor %}
-       
-    {% endfor %}
-
+                        {% for t in trial.records %}
+                            {{ t['source_url'] }}<br>
+                            {{ t['updated_at'] }}<br>
+                        {% endfor %} -->
+            {% endfor %}
+        </div>
+    </div>
+    
 {% endblock %}

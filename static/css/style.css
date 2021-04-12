@@ -56,3 +56,20 @@ a, a:hover, a:focus, a:active {
 #homepage-quote{
     font-size: 2rem;
 }
+
+/* Buttons */
+.btn{
+    background-color: #556E71;
+    color: #FCFCFA;
+    font-size: 1rem;
+}
+
+/* Trials Cards */
+.card-img-top{
+    width: 100%;
+    height: 25rem;
+}
+
+.card-title, .card-text-intro{
+    font-weight: 700;
+}
