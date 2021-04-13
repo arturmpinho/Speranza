@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bravado.client import SwaggerClient
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -24,6 +25,14 @@ def home():
     Function to load the landing page
     """
     return render_template('pages/home.html')
+
+
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    """
+    Function to load the registration page
+    """
+    return render_template('pages/register.html')
 
 
 @app.route('/clinical_trials')

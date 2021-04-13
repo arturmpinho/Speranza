@@ -16,6 +16,12 @@ a, a:hover, a:focus, a:active {
     color: inherit;
 }
 
+h1{
+    text-align: center;
+    margin: 3rem;
+    text-transform: uppercase;
+}
+
 /* Navigation Bar */
 .navbar{
     background-color: #556E71;
@@ -72,4 +78,14 @@ a, a:hover, a:focus, a:active {
 
 .card-title, .card-text-info{
     font-weight: 700;
+}
+
+/* Registration Form */
+#reg-form{
+    background: url('https://source.unsplash.com/_-Cg7vTw3bs/1600x900');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
 }
