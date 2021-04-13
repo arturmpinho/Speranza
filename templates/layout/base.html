@@ -2,9 +2,10 @@
 <html lang="en">
         {% include 'layout/head.html' %}
     <body>
-        {% block content %}
         {% include 'components/navbar.html' %}
+        {% block content %}     
         {% endblock %}
+        {% include 'components/flash_msgs.html' %}
         {% include 'layout/scripts.html' %}
     </body>
 </html>
