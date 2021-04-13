@@ -56,6 +56,30 @@ def register():
     return render_template('pages/register.html')
 
 
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # check if username already exists in the db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # check password hash matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password. Please try again!")
+
+        else:
+            # username does not exist
+            flash("Incorrect Username and/or Password. Please try again!")
+
+    return render_template('pages/login.html')
+
+
 @app.route('/clinical_trials')
 def clinical_trials():
     # Creates an instance of a Swagger client
