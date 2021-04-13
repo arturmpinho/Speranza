@@ -1,6 +1,5 @@
 {% extends "layout/base.html" %}
 {% block content %}
-{% include 'components/navbar.html' %}
 
     <h1 class="text-align-center">Register</h1>
 
@@ -13,29 +12,29 @@
                     <div class="row">
                         <div class="input-group col-form-label col-form-label-lg">
                             <span class="input-group-text">First Name | Last Name</span>
-                            <input type="text" name="fname" aria-label="fname" class="form-control">
-                            <input type="text" name="lname" aria-label="lname" class="form-control">
+                            <input type="text" name="fname" aria-label="fname" class="form-control" required>
+                            <input type="text" name="lname" aria-label="lname" class="form-control" required>
                         </div>
                     </div>
                     <!-- Email -->
                     <div class="row">
                         <div class="input-group col-form-label col-form-label-lg">
                             <span class="input-group-text">Email</span>
-                            <input type="email" name="email" aria-label="email" class="form-control">
+                            <input type="email" name="email" aria-label="email" class="form-control" required>
                         </div>
                     </div>
                     <!-- Username -->
                     <div class="row">
                         <div class="input-group col-form-label col-form-label-lg">
                             <span class="input-group-text">Username</span>
-                            <input type="text" name="username" aria-label="username" class="form-control">
+                            <input type="text" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" aria-label="username" class="form-control" required>
                         </div>
                     </div>
                     <!-- Password -->
                     <div class="row">
                         <div class="input-group col-form-label col-form-label-lg"> 
                             <span class="input-group-text">Password</span>
-                            <input type="password" name="password" aria-label="password" class="form-control">                            
+                            <input type="password" name="password" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" aria-label="password" class="form-control" required>                            
                         </div>
                     </div>
                     <!-- Submit Form -->
@@ -46,5 +45,4 @@
             </form>
         </div>
     </div>
-
 {% endblock %}

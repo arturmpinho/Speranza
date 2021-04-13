@@ -89,3 +89,8 @@ h1{
     background-size: cover;
     background-position: center;
 }
+
+/* Toast */
+.toast {
+    z-index: 99999;
+}
