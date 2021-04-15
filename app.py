@@ -51,7 +51,8 @@ def register():
 
         # put the new user into 'session' cookie
         session['user'] = request.form.get('username').lower()
-        flash("Registration Successful!")
+        flash('Registration Successful!')
+        return redirect(url_for('clinical_trials', username=session['user']))
 
     return render_template('pages/register.html')
 
@@ -68,7 +69,11 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(request.form.get("username")))
+                    flash("Welcome, {}".format(
+                        request.form.get("username")))
+                    return redirect(url_for(
+                        'clinical_trials', username=session['user']))
+
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password. Please try again!")
@@ -92,10 +97,12 @@ def clinical_trials():
     return render_template('pages/clinical_trials.html', trials=trials)
 
 
-@app.route('/my_trials')
-def my_trials():
-    trials = mongo.db.trials.find()
-    return render_template('pages/mytrials.html', trials=trials)
+@app.route('/my_trials/<username>', methods=['GET', 'POST'])
+def my_trials(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {'username': session['user']})['username']
+    return render_template('pages/mytrials.html', username=username)
 
 
 if __name__ == "__main__":

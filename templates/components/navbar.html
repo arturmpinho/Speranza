@@ -13,7 +13,7 @@
         <a class="nav-link" href="{{ url_for('register') }}">Register</a>
         <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
         <a class="nav-link" href="{{ url_for('clinical_trials') }}">Clinical Trials</a>
-        <a class="nav-link" href="{{ url_for('my_trials') }}">My Trials</a>
+        <a class="nav-link" href="{{ url_for('my_trials', username=session['user']) }}">My Trials</a>
         <a class="nav-link" href="#">Log Out</a>
       </div>
     </div>
