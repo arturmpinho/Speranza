@@ -72,7 +72,7 @@ def login():
                     flash("Welcome, {}".format(
                         request.form.get("username")))
                     return redirect(url_for(
-                        'clinical_trials', username=session['user']))
+                        'my_trials', username=session['user']))
 
             else:
                 # invalid password match
@@ -102,7 +102,19 @@ def my_trials(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {'username': session['user']})['username']
-    return render_template('pages/mytrials.html', username=username)
+
+    if session['user']:
+        return render_template('pages/mytrials.html', username=username)
+
+    return redirect(url_for('login'))
+
+
+@app.route('/logout')
+def logout():
+    # clear session cookies
+    flash('You are now logged out!')
+    session.pop('user')
+    return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
