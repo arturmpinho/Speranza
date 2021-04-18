@@ -102,10 +102,10 @@ def clinical_trials():
 
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
 def my_trials(user_id):
-
     if session['user']:
+        trials = list(mongo.db.trials.find({'user_id': str(session['user'])}))
         return render_template(
-            'pages/mytrials.html', user_id=user_id)
+            'pages/mytrials.html', user_id=user_id, trials=trials)
 
     return redirect(url_for('login'))
 
