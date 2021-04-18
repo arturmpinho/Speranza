@@ -50,9 +50,10 @@ def register():
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session['user'] = request.form.get('username').lower()
+        session['user'] = str(mongo.db.users.find_one(
+            {"username": request.form.get('username').lower()})['_id'])
         flash('Registration Successful!')
-        return redirect(url_for('clinical_trials', username=session['user']))
+        return redirect(url_for('my_trials', user_id=session['user']))
 
     return render_template('pages/register.html')
 
@@ -68,11 +69,13 @@ def login():
             # check password hash matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
+                    session['user'] = str(mongo.db.users.find_one(
+                        {"username": request.form.get(
+                            'username').lower()})['_id'])
                     flash("Welcome, {}".format(
                         request.form.get("username")))
                     return redirect(url_for(
-                        'my_trials', username=session['user']))
+                        'my_trials', user_id=session['user']))
 
             else:
                 # invalid password match
@@ -97,14 +100,12 @@ def clinical_trials():
     return render_template('pages/clinical_trials.html', trials=trials)
 
 
-@app.route('/my_trials/<username>', methods=['GET', 'POST'])
-def my_trials(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {'username': session['user']})['username']
+@app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
+def my_trials(user_id):
 
     if session['user']:
-        return render_template('pages/mytrials.html', username=username)
+        return render_template(
+            'pages/mytrials.html', user_id=user_id)
 
     return redirect(url_for('login'))
 
