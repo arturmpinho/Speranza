@@ -88,24 +88,40 @@ def login():
     return render_template('pages/login.html')
 
 
+# Creates an instance of a Swagger client
+OPENTRIALS_API_SPEC = (
+    'https://api.opentrials.net/v1/swagger.yaml')
+config = {'use_models': False}
+client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
+dir(client)
+
+
 @app.route('/clinical_trials')
 def clinical_trials():
-    # Creates an instance of a Swagger client
-    OPENTRIALS_API_SPEC = (
-        'https://api.opentrials.net/v1/swagger.yaml')
-    config = {'use_models': False}
-    client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
-    dir(client)
+
     trials = client.trials.searchTrials(q='immunotherapy&cancer').result()
+
     return render_template('pages/clinical_trials.html', trials=trials)
 
 
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
 def my_trials(user_id):
+
     if session['user']:
-        trials = list(mongo.db.trials.find({'user_id': str(session['user'])}))
+
+        trials_mdb = mongo.db.trials.find({'user_id': user_id})
+
+        trials = []
+
+        for trial in trials_mdb:
+            id = str('id:' + ' ' + trial['id'])
+            trial_api = client.trials.searchTrials(q=id).result()
+            trials.append(trial_api)
+
+        comments = mongo.db.comments.find()
         return render_template(
-            'pages/mytrials.html', user_id=user_id, trials=trials)
+            'pages/mytrials.html', user_id=user_id,
+            trials=trials, comments=comments)
 
     return redirect(url_for('login'))
 

@@ -4,59 +4,70 @@
     <h1>My Trials</h1>
 
     <div class="container-fluid">
-        <div class="row">
-            {% for trial in trials %}
-                <div class="card .col" style="width: 35rem;">
-                    <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
-                    <div class="card-body d-flex flex-column">
-                        <h4 class="card-title mb-5">#</h4>
-                        <p class="card-text"><span class="card-text-intro">Trial Id:</span> {{ trial.id }}</p>
-                        <p class="card-text"><span class="card-text-intro">User Id:</span> {{ trial.user_id }}</p>
-                        <p class="card-text"><span class="card-text-intro">Country:</span> #</p>
-                        <p class="card-text"><span class="card-text-intro">Status:</span> #</p>
-                        <p class="card-text"><span class="card-text-intro">Recruitment Status:</span> #</p>
-                        <p class="card-text"><span class="card-text-intro">Study Phase:</span> #</p> 
-                        <a type="button" class="btn card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#a{{ trial.id }}">
-                            <i class="fas fa-glasses"></i> Check this trial
-                        </a>
-                    </div>
+      <div class="row">
+        {% for trial in trials %}
+            <div class="card .col" style="width: 35rem;">
+                <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title mb-5">{{ trial['items'][0].public_title }}</h4>
+                    <p class="card-text"><span class="card-text-intro">Country:</span>  {% for t in trial['items'][0].locations %}
+                                            {{ t['name'] }}
+                                        {% endfor %}</p>
+                    <p class="card-text"><span class="card-text-intro">Status:</span> {{ trial['items'][0].status }}</p>
+                    <p class="card-text"><span class="card-text-intro">Recruitment Status:</span> {{ trial['items'][0].status }}</p>
+                    <p class="card-text"><span class="card-text-intro">Study Phase:</span> {{ trial['items'][0].study_phase[0] }}</p> 
+                    <a type="button" class="btn card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#a{{ trial['items'][0].id }}">
+                        <i class="fas fa-glasses"></i> Check this trial
+                    </a>
+                
                 </div>
+            </div>
 
-                    <!-- Modal -->
-                <div class="modal fade" id="a{{ trial.id }}" tabindex="-1" aria-labelledby="{{ trial.id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title">#</h2>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-intro">
-                                <p class="card-text"><span class="card-text-info">Country:</span>  #</p>
-                                <p class="card-text"><span class="card-text-info">Status:</span> #</p>
-                                <p class="card-text"><span class="card-text-info">Study Phase:</span> #</p>
-                                <p class="card-text"><span class="card-text-info">Recruitment Status:</span> #</p>
-                            </div>
-                            <div class="modal-body">
-                                #
-                            </div>
-                            <div class="modal-extra-info">
-                                <p class="card-text"><span class="card-text-info">Organisation:</span> #</p>
-                                <p class="card-text"><span class="card-text-info">Lead Researcher:</span> #</p>
-                                <p class="card-text"><span class="card-text-info"><a href="#" target="_blank">Offical link</a></span></p>
-                                <p class="card-text"><span class="card-text-info">Last update:</span> #</p>
-                            </div>
-                            <div class="modal-comments">
-                                <p class="card-text"><span class="card-text-intro">Comment ID:</span> {{ trial.comment_id }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials</button>
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="a{{ trial['items'][0].id }}" tabindex="-1" aria-labelledby="{{ trial['items'][0].id }}" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">{{ trial['items'][0].public_title }}</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-intro">
+                            <p class="card-text"><span class="card-text-info">Country:</span>  {% for t in trial['items'][0].locations %}
+                                {{ t['name'] }}
+                            {% endfor %}</p>
+                            <p class="card-text"><span class="card-text-info">Status:</span> {{ trial['items'][0].status }}</p>
+                            <p class="card-text"><span class="card-text-info">Study Phase:</span> {{ trial['items'][0].study_phase[0] }}</p>
+                            <p class="card-text"><span class="card-text-info">Recruitment Status:</span> {{ trial['items'][0].status }}</p>
+                        </div>
+                        <div class="modal-body">
+                            {{ trial.brief_summary }}
+                        </div>
+                        <div class="modal-extra-info">
+                            <p class="card-text"><span class="card-text-info">Organisation:</span> {% for t in trial['items'][0].organisations %}
+                                {{ t['name'] }}<br>
+                            {% endfor %}</p>
+                            <p class="card-text"><span class="card-text-info">Lead Researcher:</span> {% for t in trial['items'][0].persons %}
+                                {{ t['name'] }}<br>
+                            {% endfor %}</p>
+                            <p class="card-text"><span class="card-text-info"><a href="{% for t in trial['items'][0].records %}
+                                {{ t['source_url'] }}
+                            {% endfor %} }}" target="_blank">Offical link</a></span></p>
+                            <p class="card-text"><span class="card-text-info">Last update:</span> {% for t in trial['items'][0].records %}
+                                {{ t['updated_at'] }}<br>
+                            {% endfor %}</p>
+                        </div>
+                        <div class="modal-comments">
+                            <p class="card-text"><span class="card-text-info">Comment ID:</span> {{ trial.comment_id }}</p>                     
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials</button>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
+</div>
 
 {% endblock %}
