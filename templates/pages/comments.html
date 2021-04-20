@@ -1,0 +1,12 @@
+<div class="modal-comments">
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        {% if comment.trial_id == trial['items'][0].id %}
+            {% if comment.user_id == user_id %}
+                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} <a type="button"><i class=" btn far fa-trash-alt"></i></a></p>
+            {% else %}
+                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
+            {% endif %}
+        {% endif %}
+    {% endfor %}                        
+</div>

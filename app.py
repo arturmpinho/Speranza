@@ -110,7 +110,6 @@ def my_trials(user_id):
     if session['user']:
 
         trials_mdb = mongo.db.trials.find({'user_id': user_id})
-
         trials = []
 
         for trial in trials_mdb:
@@ -118,7 +117,11 @@ def my_trials(user_id):
             trial_api = client.trials.searchTrials(q=id).result()
             trials.append(trial_api)
 
-        comments = mongo.db.comments.find()
+        mongo_comments = mongo.db.comments.find()
+        comments = []
+        for comment in mongo_comments:
+            comments.append(comment)
+
         return render_template(
             'pages/mytrials.html', user_id=user_id,
             trials=trials, comments=comments)

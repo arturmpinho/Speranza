@@ -56,10 +56,8 @@
                                 {{ t['updated_at'] }}<br>
                             {% endfor %}</p>
                         </div>
-                        <div class="modal-comments">
-                            <p class="card-text"><span class="card-text-info">Comment ID:</span> {{ trial.comment_id }}</p>                     
-                        </div>
-                        <div class="modal-footer">
+                        {% include 'pages/comments.html' %}
+                            <div class="modal-footer">
                             <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials</button>
                         </div>
