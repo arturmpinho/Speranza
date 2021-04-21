@@ -104,6 +104,27 @@ def clinical_trials():
     return render_template('pages/clinical_trials.html', trials=trials)
 
 
+@app.route('/add_trial/', methods=['GET', 'POST'])
+def add_trial():
+
+    if not session.get('user'):
+        flash('You can not bookmark a trial prior to sign in. Please log in and try again!')
+        return redirect(url_for('login'))
+
+    if request.method == "POST":
+
+        favourite = {
+            'id': request.form.get('trial_api_id'),
+            'user_id': session.get('user')
+        }
+
+        mongo.db.trials.insert_one(favourite)
+        flash('Trial added to your favourites!')
+        return redirect(url_for('clinical_trials'))
+
+    return render_template('pages/add_trial.html', favourite=favourite)
+
+
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
 def my_trials(user_id):
 

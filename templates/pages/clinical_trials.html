@@ -21,48 +21,8 @@
                         </a>
                     </div>
                 </div>
-
-
-                    <!-- Modal -->
-                <div class="modal fade" id="a{{ trial.id }}" tabindex="-1" aria-labelledby="{{ trial.id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h2 class="modal-title">{{ trial.public_title }}</h2>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-intro">
-                                <p class="card-text"><span class="card-text-info">Country:</span>  {% for t in trial.locations %}
-                                    {{ t['name'] }}
-                                {% endfor %}</p>
-                                <p class="card-text"><span class="card-text-info">Status:</span> {{ trial.status }}</p>
-                                <p class="card-text"><span class="card-text-info">Study Phase:</span> {{ trial.study_phase[0] }}</p>
-                                <p class="card-text"><span class="card-text-info">Recruitment Status:</span> {{ trial.status }}</p>
-                            </div>
-                            <div class="modal-body">
-                                {{ trial.brief_summary }}
-                            </div>
-                            <div class="modal-extra-info">
-                                <p class="card-text"><span class="card-text-info">Organisation:</span> {% for t in trial.organisations %}
-                                    {{ t['name'] }}<br>
-                                {% endfor %}</p>
-                                <p class="card-text"><span class="card-text-info">Lead Researcher:</span> {% for t in trial.persons %}
-                                    {{ t['name'] }}<br>
-                                {% endfor %}</p>
-                                <p class="card-text"><span class="card-text-info"><a href="{% for t in trial.records %}
-                                    {{ t['source_url'] }}
-                                {% endfor %} }}" target="_blank">Offical link</a></span></p>
-                                <p class="card-text"><span class="card-text-info">Last update:</span> {% for t in trial.records %}
-                                    {{ t['updated_at'] }}<br>
-                                {% endfor %}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn"><i class="fas fa-heart"></i> Add to favourites</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Modal -->
+                {% include 'pages/add_trial.html' %}
             {% endfor %}
         </div>
     </div>
