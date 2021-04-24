@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <input type="hidden" name="trial_api_id" value="{{ trial.id }}">
+                <input name="trial_api_id" value="{{ trial.id }}" hidden>
                 <h2 class="modal-title">{{ trial.public_title }}</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -32,8 +32,12 @@
                 {% endfor %}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                {% if session.get('user') %}
                 <button type="submit" class="btn"><i class="fas fa-heart"></i> Add to favourites</button>
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                {% else %}
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                {% endif %}
             </div>
         </div>
     </div>
