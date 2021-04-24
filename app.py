@@ -113,9 +113,7 @@ def add_trial():
 
     if request.method == "POST":
 
-        trials = client.trials.searchTrials(q='immunotherapy&cancer').result()
         user_trial_id = request.form.get('trial_api_id') + session.get('user')
-        trial_api_id = trials['items'][0]['id']
 
         favourite = {
             'id': request.form.get('trial_api_id'),
@@ -128,7 +126,7 @@ def add_trial():
         return redirect(url_for('clinical_trials'))
 
     return render_template(
-        'pages/add_trial.html', favourite=favourite, trial_api_id=trial_api_id)
+        'pages/add_trial.html', favourite=favourite)
 
 
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
