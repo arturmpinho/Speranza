@@ -358,6 +358,13 @@ The comments section will only be displayd when the user is logged in, and will 
 ##### **(Potential) Corrections** #####
 https://stackoverflow.com/questions/37270787/uncaught-syntaxerror-failed-to-execute-queryselector-on-document/37271406
 
+
+##### **Bug** #####
+Get unique trial ID from the API in modal, after displaying API trials with for loop. All trials were getting the exact same trial id from the API.
+##### **(Potential) Corrections** #####
+Jinja2 template -> {trial.id} as value of a hidden input field with trial_id_api attribute name.
+
+
 [[Back to top]](#table-of-contents)
 
 ---
