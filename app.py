@@ -98,10 +98,16 @@ dir(client)
 
 @app.route('/clinical_trials')
 def clinical_trials():
-
     trials = client.trials.searchTrials(q='immunotherapy&cancer').result()
-
-    return render_template('pages/clinical_trials.html', trials=trials)
+    if not session.get('user'):
+        return render_template('pages/clinical_trials.html', trials=trials)
+    else:
+        my_trials = mongo.db.trials.find({'user_id': session.get('user')})
+        added_trials = []
+        for trial in my_trials:
+            added_trials.append(trial['id'])
+        return render_template('pages/clinical_trials.html',
+                               trials=trials, added_trials=added_trials)
 
 
 @app.route('/add_trial/', methods=['GET', 'POST'])
@@ -113,20 +119,27 @@ def add_trial():
 
     if request.method == "POST":
 
-        user_trial_id = request.form.get('trial_api_id') + session.get('user')
+        user_trial_id = str(request.form.get(
+            'trial_api_id') + session.get('user'))
+
+        # added_trial = mongo.db.trials.find_one({
+        #     'user_trial_id': user_trial_id})['user_trial_id']
+
+        # print(added_trial)
 
         favourite = {
-            'id': request.form.get('trial_api_id'),
-            'user_id': session.get('user'),
-            'user_trial_id': user_trial_id
-        }
+                'id': request.form.get('trial_api_id'),
+                'user_id': session.get('user'),
+                'user_trial_id': user_trial_id
+            }
 
         mongo.db.trials.insert_one(favourite)
         flash('Trial added to your favourites!')
+
         return redirect(url_for('clinical_trials'))
 
     return render_template(
-        'pages/add_trial.html', favourite=favourite)
+        'pages/add_trial.html', favourite=favourite, user_trial_id=user_trial_id)
 
 
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])

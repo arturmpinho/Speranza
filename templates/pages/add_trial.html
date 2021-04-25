@@ -33,10 +33,12 @@
             </div>
             <div class="modal-footer">
                 {% if session.get('user') %}
-                <button type="submit" class="btn"><i class="fas fa-heart"></i> Add to favourites</button>
-                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                {% else %}
-                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    {% if trial.id in added_trials %}
+                        <button type="submit" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials</button><br>                
+                    {% else %}
+                        <button type="submit" class="btn"><i class="fas fa-heart"></i> Add to favourites</button>
+                    {% endif %}
+                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                 {% endif %}
             </div>
         </div>
