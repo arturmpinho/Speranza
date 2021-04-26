@@ -139,7 +139,8 @@ def add_trial():
         return redirect(url_for('clinical_trials'))
 
     return render_template(
-        'pages/add_trial.html', favourite=favourite, user_trial_id=user_trial_id)
+        'pages/add_trial.html', favourite=favourite,
+        user_trial_id=user_trial_id)
 
 
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
@@ -165,6 +166,20 @@ def my_trials(user_id):
             trials=trials, comments=comments)
 
     return redirect(url_for('login'))
+
+
+@app.route('/remove_trial/<trial_id>')
+def remove_trial(trial_id):
+
+    trial_to_remove = mongo.db.trials.find_one({
+        'id': trial_id,
+        'user_id': session['user']
+    })
+    mongo.db.trials.delete_one({"_id": trial_to_remove["_id"]})
+
+    flash('Trial successfully deleted from your favourites!')
+
+    return redirect(url_for('my_trials', user_id=session['user']))
 
 
 @app.route('/logout')
