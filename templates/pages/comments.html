@@ -26,12 +26,11 @@
                 {% endfor %}
             </p>
             <h5 class="card-title">Share your comments and/or experiences with this trial</h5>
-                {% if public %}
-                    <form id="comments_form" action="{{url_for('add_post', user_id=user_id, trial_id=trial.id)}}" method="POST">
-                {% else %}
-                    <form id="comments_form" action="{{url_for('add_post', user_id=user_id, trial_id=trial['items'][0].id)}}" method="POST">
-                {% endif %}
-                
+            {% if public %}
+                <form id="comments_form" action="{{url_for('add_comment', user_id=session.get('user'), trial_id=trial.id)}}" method="POST">
+            {% else %}
+                <form id="comments_form" action="{{url_for('add_comment', user_id=user_id, trial_id=trial['items'][0].id)}}" method="POST">
+            {% endif %}
                 <div class="form-group">
                     <div class="comments-input">
                         {% if public %}
@@ -39,7 +38,7 @@
                         {% else %}
                             <input name="trial_id" value="{{ trial['items'][0].id }}" hidden>
                         {% endif %}
-                        <textarea form="comments_form" name="" id="user_comment" cols="100" rows="10"></textarea>
+                        <textarea name="user_comment" id="user_comment" cols="100" rows="10"></textarea>
                     </div>
                     <div class="comments-action">
                         <button class="btn" type="submit">Post</button>
@@ -50,5 +49,5 @@
         <div class="card-footer text-muted">
           Thank you for your contribution to the community!
         </div>
-      </div>                  
+    </div>                  
 </div>

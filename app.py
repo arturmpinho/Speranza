@@ -211,11 +211,19 @@ def remove_trial(trial_id):
 
 
 
-@app.route('/add_post/<user_id>/<trial_id>', methods=['GET', 'POST'])
+@app.route('/add_comment/<user_id>/<trial_id>', methods=['GET', 'POST'])
 def add_post(user_id, trial_id):
     if request.method == 'POST':
-        print(user_id)
-        print(trial_id)
+        user_comment = request.form.get('user_comment')
+        comment = {
+            'user_id': user_id,
+            'trial_id': trial_id,
+            'user_comments': user_comment
+        }
+        mongo.db.comments.insert_one(comment)
+    return redirect(url_for('clinical_trials'))
+
+
 
 
 @app.route('/logout')
