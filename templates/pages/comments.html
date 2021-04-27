@@ -1,12 +1,32 @@
-<div class="modal-comments">
-    <h2>Comments</h2>
-    {% for comment in comments %}
-        {% if comment.trial_id == trial['items'][0].id %}
-            {% if comment.user_id == user_id %}
-                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} <a type="button"><i class=" btn far fa-trash-alt"></i></a></p>
-            {% else %}
-                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
-            {% endif %}
-        {% endif %}
-    {% endfor %}                        
+<div class="modal-comments"> 
+    <div class="card text-center">
+        <div class="card-header">
+          Comments/Reviews
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {% for comment in comments %}
+                    {% if comment.trial_id == trial['items'][0].id %}
+                        {% if comment.user_id == user_id %}
+                            <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} <a type="button"><i class=" btn far fa-trash-alt"></i></a></p>
+                        {% else %}
+                            <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </p>
+            <h5 class="card-title">Share your comments and/or experiences with this trial</h5>
+            <form action="" method="POST">
+                <div class="comments-input">
+                    <textarea name="" id="user_comment" cols="100" rows="10"></textarea>
+                </div>
+                <div class="comments-action">
+                    <button class="btn btn-primary" type="submit">Post</button>
+                </div>                   
+            </form>                
+        </div>
+        <div class="card-footer text-muted">
+          Thank you for your contribution to the community!
+        </div>
+      </div>                  
 </div>

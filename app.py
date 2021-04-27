@@ -211,7 +211,7 @@ def logout():
     # clear session cookies
     flash('You are now logged out!')
     session.pop('user')
-    return redirect(url_for('login'))
+    return redirect(url_for('home'))
 
 
 if __name__ == "__main__":
