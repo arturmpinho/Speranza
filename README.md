@@ -365,6 +365,11 @@ Get unique trial ID from the API in modal, after displaying API trials with for 
 Jinja2 template -> {trial.id} as value of a hidden input field with trial_id_api attribute name.
 
 
+##### **Bug** #####
+Textarea outside modal
+##### **(Potential) Corrections** #####
+textarea {max-width:95%;}
+
 [[Back to top]](#table-of-contents)
 
 ---

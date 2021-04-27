@@ -16,13 +16,15 @@
                 {% endfor %}
             </p>
             <h5 class="card-title">Share your comments and/or experiences with this trial</h5>
-            <form action="" method="POST">
-                <div class="comments-input">
-                    <textarea name="" id="user_comment" cols="100" rows="10"></textarea>
+            <form id="comments_form" action="" method="POST">
+                <div class="form-group">
+                    <div class="comments-input">
+                        <textarea form="comments_form" name="" id="user_comment" cols="100" rows="10"></textarea>
+                    </div>
+                    <div class="comments-action">
+                        <button class="btn" type="submit">Post</button>
+                    </div>                   
                 </div>
-                <div class="comments-action">
-                    <button class="btn btn-primary" type="submit">Post</button>
-                </div>                   
             </form>                
         </div>
         <div class="card-footer text-muted">

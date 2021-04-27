@@ -99,3 +99,16 @@ h1{
 .form-control{
     font-size: 2rem;
 }
+
+/* Comments */
+#user_comment {
+    max-width:95%;
+    border-radius: 2rem;
+    border-color: #556E71;
+    border-width: 0.5rem;
+    text-indent: 1rem;
+}
+
+#user_comment:focus {
+    outline: none;
+}
