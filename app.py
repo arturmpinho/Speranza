@@ -19,6 +19,14 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Creates an instance of a Swagger client
+OPENTRIALS_API_SPEC = (
+    'https://api.opentrials.net/v1/swagger.yaml')
+config = {'use_models': False}
+client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
+dir(client)
+
+
 @app.route('/')
 def home():
     """
@@ -88,26 +96,42 @@ def login():
     return render_template('pages/login.html')
 
 
-# Creates an instance of a Swagger client
-OPENTRIALS_API_SPEC = (
-    'https://api.opentrials.net/v1/swagger.yaml')
-config = {'use_models': False}
-client = SwaggerClient.from_url(OPENTRIALS_API_SPEC, config=config)
-dir(client)
-
-
-@app.route('/clinical_trials')
+@app.route('/clinical_trials', methods=["GET", "POST"])
 def clinical_trials():
-    trials = client.trials.searchTrials(q='immunotherapy&cancer').result()
-    if not session.get('user'):
+
+    if request.method == "POST":
+
+        search = "cancer&immunotherapy&"+request.form.get('search')
+
+        trials = client.trials.searchTrials(
+            q=search).result()
+
+        if not session.get('user'):
+            return render_template('pages/clinical_trials.html',
+                                    trials=trials, search=search)
+        else:
+            my_trials = mongo.db.trials.find({'user_id': session.get('user')})
+            added_trials = []
+            for trial in my_trials:
+                added_trials.append(trial['id'])
+            return render_template('pages/clinical_trials.html', trials=trials,
+                                    added_trials=added_trials, search=search)
+
+    elif not session.get('user'):
+        trials = client.trials.searchTrials(
+            q='immunotherapy&cancer').result()
+
         return render_template('pages/clinical_trials.html', trials=trials)
+
     else:
+        trials = client.trials.searchTrials(
+            q='immunotherapy&cancer').result()
         my_trials = mongo.db.trials.find({'user_id': session.get('user')})
         added_trials = []
         for trial in my_trials:
             added_trials.append(trial['id'])
-        return render_template('pages/clinical_trials.html',
-                               trials=trials, added_trials=added_trials)
+        return render_template('pages/clinical_trials.html', trials=trials,
+                                added_trials=added_trials)
 
 
 @app.route('/add_trial/', methods=['GET', 'POST'])

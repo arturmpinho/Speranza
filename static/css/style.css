@@ -94,3 +94,8 @@ h1{
 .toast {
     z-index: 99999;
 }
+
+/* Search Bar */
+.form-control{
+    font-size: 2rem;
+}

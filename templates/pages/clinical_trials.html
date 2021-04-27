@@ -3,7 +3,17 @@
 
     <h1>Clinical Trials</h1>
 
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <form class="form-inline mb-5" method="POST" action="{{url_for('clinical_trials')}}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search keyword" aria-label="Search keywords" name="search" value="">
+                    <button class="btn my-2 my-sm-0 adjust-right" type="submit">Search</button>
+                  </form>             
+            </div>
+        </div>
+    </div>
+    
     <div class="container-fluid">
         <div class="row">
             {% for trial in trials['items'] %}
