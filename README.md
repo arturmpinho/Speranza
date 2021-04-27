@@ -370,6 +370,11 @@ Textarea outside modal
 ##### **(Potential) Corrections** #####
 textarea {max-width:95%;}
 
+##### **Bug** #####
+Form within form not possible
+##### **(Potential) Corrections** #####
+Comment section beloz modal footer
+
 [[Back to top]](#table-of-contents)
 
 ---

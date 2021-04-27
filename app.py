@@ -99,6 +99,10 @@ def login():
 @app.route('/clinical_trials', methods=["GET", "POST"])
 def clinical_trials():
 
+    mongo_comments = mongo.db.comments.find()
+    comments = []
+    for comment in mongo_comments:
+        comments.append(comment)
     if request.method == "POST":
 
         search = "cancer&immunotherapy&"+request.form.get('search')
@@ -115,7 +119,7 @@ def clinical_trials():
             for trial in my_trials:
                 added_trials.append(trial['id'])
             return render_template('pages/clinical_trials.html', trials=trials,
-                                    added_trials=added_trials, search=search)
+                                    added_trials=added_trials, search=search, comments=comments, public=True)
 
     elif not session.get('user'):
         trials = client.trials.searchTrials(
@@ -131,7 +135,7 @@ def clinical_trials():
         for trial in my_trials:
             added_trials.append(trial['id'])
         return render_template('pages/clinical_trials.html', trials=trials,
-                                added_trials=added_trials)
+                                added_trials=added_trials, comments=comments, public=True)
 
 
 @app.route('/add_trial/', methods=['GET', 'POST'])
@@ -187,7 +191,7 @@ def my_trials(user_id):
 
         return render_template(
             'pages/mytrials.html', user_id=user_id,
-            trials=trials, comments=comments)
+            trials=trials, comments=comments, public=False)
 
     return redirect(url_for('login'))
 
@@ -204,6 +208,14 @@ def remove_trial(trial_id):
     flash('Trial successfully deleted from your favourites!')
 
     return redirect(url_for('my_trials', user_id=session['user']))
+
+
+
+@app.route('/add_post/<user_id>/<trial_id>', methods=['GET', 'POST'])
+def add_post(user_id, trial_id):
+    if request.method == 'POST':
+        print(user_id)
+        print(trial_id)
 
 
 @app.route('/logout')

@@ -24,9 +24,10 @@
             </div>
 
             <!-- Modal -->
-            <form class="modal fade" id="a{{ trial['items'][0].id }}" tabindex="-1" aria-labelledby="{{ trial['items'][0].id }}" aria-hidden="true">
+            <div class="modal fade" id="a{{ trial['items'][0].id }}" tabindex="-1" aria-labelledby="{{ trial['items'][0].id }}" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
+                        <form method="POST" action="#">
                         <div class="modal-header">
                             <input name="trial_api_id" value="{{ trial.id }}" hidden>
                             <h2 class="modal-title">{{ trial['items'][0].public_title }}</h2>
@@ -57,14 +58,17 @@
                                 {{ t['updated_at'] }}<br>
                             {% endfor %}</p>
                         </div>
-                        {% include 'pages/comments.html' %}
-                            <div class="modal-footer">
+                        
+                        <div class="modal-footer">
                             <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                             <a href="{{ url_for('remove_trial', trial_id=trial['items'][0].id) }}" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials </a>
                         </div>
+                        </form>
+                        {% include 'pages/comments.html' %}
                     </div>
                 </div>
-            </form>
+            </div>
+            
         {% endfor %}
     </div>
 </div>

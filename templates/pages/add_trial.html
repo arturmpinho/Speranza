@@ -1,6 +1,7 @@
-<form class="modal fade" id="a{{ trial.id }}" tabindex="-1" aria-labelledby="{{ trial.id }}" aria-hidden="true" action="{{ url_for('add_trial') }}" method="POST">
+<div class="modal fade" id="a{{ trial.id }}" tabindex="-1" aria-labelledby="{{ trial.id }}" aria-hidden="true" >
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
+            <form method="POST"  action="{{ url_for('add_trial') }}">
             <div class="modal-header">
                 <input name="trial_api_id" value="{{ trial.id }}" hidden>
                 <h2 class="modal-title">{{ trial.public_title }}</h2>
@@ -31,8 +32,12 @@
                     {{ t['updated_at'] }}<br>
                 {% endfor %}</p>
             </div>
+            <div>
+                
+            </div>
             <div class="modal-footer">
                 {% if session.get('user') %}
+                    
                     {% if trial.id in added_trials %}
                         <button type="submit" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials</button><br>                
                     {% else %}
@@ -40,7 +45,10 @@
                     {% endif %}
                     <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                 {% endif %}
+               
             </div>
+            </form>
+             {% include 'pages/comments.html' %}
         </div>
     </div>
-</form>
+</div>

@@ -6,19 +6,39 @@
         <div class="card-body">
             <p class="card-text">
                 {% for comment in comments %}
-                    {% if comment.trial_id == trial['items'][0].id %}
-                        {% if comment.user_id == user_id %}
-                            <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} <a type="button"><i class=" btn far fa-trash-alt"></i></a></p>
-                        {% else %}
-                            <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
+                    {% if public %}
+                        {% if comment.trial_id == trial.id %}
+                            {% if comment.user_id == user_id %}
+                                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} <a type="button"><i class=" btn far fa-trash-alt"></i></a></p>
+                            {% else %}
+                                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        {% if comment.trial_id == trial['items'][0].id %}
+                            {% if comment.user_id == user_id %}
+                                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} <a type="button"><i class=" btn far fa-trash-alt"></i></a></p>
+                            {% else %}
+                                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
             </p>
             <h5 class="card-title">Share your comments and/or experiences with this trial</h5>
-            <form id="comments_form" action="" method="POST">
+                {% if public %}
+                    <form id="comments_form" action="{{url_for('add_post', user_id=user_id, trial_id=trial.id)}}" method="POST">
+                {% else %}
+                    <form id="comments_form" action="{{url_for('add_post', user_id=user_id, trial_id=trial['items'][0].id)}}" method="POST">
+                {% endif %}
+                
                 <div class="form-group">
                     <div class="comments-input">
+                        {% if public %}
+                            <input name="trial_id" value="{{ trial.id }}" hidden>
+                        {% else %}
+                            <input name="trial_id" value="{{ trial['items'][0].id }}" hidden>
+                        {% endif %}
                         <textarea form="comments_form" name="" id="user_comment" cols="100" rows="10"></textarea>
                     </div>
                     <div class="comments-action">
