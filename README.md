@@ -10,7 +10,7 @@
 
 The main goal of this project is to give a pinch of hope to cancer patients and their friends and relatives by introducing them to the latest advancements within the *immunotherapy* world, contributing to an easier access to clinical trials information available worldwide.
 
-On top of this, provide the any user to share their stories about any given clinical trial.
+On top of this, provide registered users to share their stories/testemonies/comments about any given clinical trial.
 
 ***"Hope is the life we live, the attitude we carry, the gift we give others. Hope is the energy, the courage and the strength to keep believing in the goodness of life, God and the people around us."***
 
