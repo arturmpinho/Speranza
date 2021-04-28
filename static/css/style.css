@@ -112,3 +112,14 @@ h1{
 #user_comment:focus {
     outline: none;
 }
+
+/* Footer */
+#footer {
+    background-color: #556E71;
+    color: #FCFCFA;
+}
+
+.social-links{
+    margin: 1.6rem;
+    font-size: 2rem;
+}
