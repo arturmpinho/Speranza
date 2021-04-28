@@ -44,7 +44,7 @@ On top of this, provide the any user to share their stories about any given clin
  
     4.2 [Libraries](#libraries)
  
-    4.3 [Frameworks](#frameworks)
+    4.3 [Frameworks and Databases](#frameworks-and-databases)
  
     4.4 [Tools](#tools)
 
@@ -233,28 +233,51 @@ The comments section will only be displayd when the user is logged in, and will 
 <a></a>
 
 ### **Languages**
-* 
+* [HTML](https://www.w3.org/MarkUp/1995-archive/html-spec.html "HTML")
+* [CSS](https://www.w3.org/Style/CSS/Overview.en.html "CSS")
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript "Javascript")
+* [Python](https://www.python.org/ "Python")
+* [Jinja2](https://jinja.palletsprojects.com/en/2.11.x/ "Jinja2")
 
 [[Back to top]](#table-of-contents)
 
 <a></a>
 
 ### **Libraries**
-* 
+* [jQuery](https://jquery.com/ "jQuery")
+* [FontAwesome](https://fontawesome.com/ "FontAwesome")
+* [Google Fonts](https://fonts.google.com/ "Google Fonts")
+* [Unsplash](https://unsplash.com/ "Unsplash")
 
 [[Back to top]](#table-of-contents)
 
 <a></a>
 
-### **Frameworks**
-* 
+### **Frameworks and Databases**
+* [Bootstrap](https://getbootstrap.com/ "Bootstrap")
+* [MongoDB](https://www.mongodb.com/2 "MongoDB")
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/ "Flask")
+
 
 [[Back to top]](#table-of-contents)
 
 <a></a>
 
 ### **Tools**
-* 
+* [Git](https://git-scm.com/ "Git")
+* [Gitpod](https://gitpod.io/ "Gitpod")
+* [Balsamiq](https://balsamiq.com/ "Balsamiq")
+* [Coolors](https://coolors.co/ "Coolors")
+* [Contrast-Checker](https://coolors.co/contrast-checker "Contrast Checker")
+* [Free Logo Design](https://www.freelogodesign.org "Free Logo Design")
+* [TinyPNG](https://tinypng.com/ "Tiny PNG")
+* [Favicon](https://favicon.io/favicon-converter/ "Favcicon")
+* [Techsini](http://techsini.com/multi-mockup/ "Techsini")
+* [W3C-Markup-validation](https://validator.w3.org/ "Markup Validator")
+* [W3C-Jigsaw](https://jigsaw.w3.org/css-validator/ "Jigsaw Validator")
+* [W3C-Spell Checker](https://www.w3.org/2002/01/spellchecker "Spell Checker")
+* [Google-Lightouse](https://developers.google.com/web/tools/lighthouse "Google Lighthouse")
+* [JSHint](https://jshint.com/ "JSHint")
 
 [[Back to top]](#table-of-contents)
 
@@ -374,6 +397,12 @@ textarea {max-width:95%;}
 Form within form not possible
 ##### **(Potential) Corrections** #####
 Comment section beloz modal footer
+
+##### **Bug** #####
+Textarea of second modal can not retreive data from the previous modal
+##### **(Potential) Corrections** #####
+jQuery>siblings
+
 
 [[Back to top]](#table-of-contents)
 
