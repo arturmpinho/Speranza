@@ -212,7 +212,7 @@ def remove_trial(trial_id):
 
 
 @app.route('/add_comment/<user_id>/<trial_id>', methods=['GET', 'POST'])
-def add_post(user_id, trial_id):
+def add_comment(user_id, trial_id):
     if request.method == 'POST':
         user_comment = request.form.get('user_comment')
         comment = {
@@ -224,6 +224,23 @@ def add_post(user_id, trial_id):
     return redirect(url_for('clinical_trials'))
 
 
+@app.route('/edit_comment/<user_id>/<comment_id>', methods=['GET', 'POST'])
+def edit_comment(user_id, comment_id):
+    comment_to_edit = ""
+
+    if request.method == "POST":
+        comment_to_edit = mongo.db.comments.find_one({
+        "user_id": user_id,
+        "_id": ObjectId(comment_id)
+        })
+        trial = comment_to_edit["trial_id"]
+        mongo.db.comments.update({
+            "_id": ObjectId(comment_to_edit)}, {
+                'user_id': user_id,
+                "user_comments": request.form.get('user_comment')
+            })
+
+    return render_template('pages/clinical_trials.html', comment=comment_to_edit, trial=trial)
 
 
 @app.route('/logout')
