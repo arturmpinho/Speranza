@@ -381,12 +381,10 @@ The comments section will only be displayd when the user is logged in, and will 
 ##### **(Potential) Corrections** #####
 https://stackoverflow.com/questions/37270787/uncaught-syntaxerror-failed-to-execute-queryselector-on-document/37271406
 
-
 ##### **Bug** #####
 Get unique trial ID from the API in modal, after displaying API trials with for loop. All trials were getting the exact same trial id from the API.
 ##### **(Potential) Corrections** #####
 Jinja2 template -> {trial.id} as value of a hidden input field with trial_id_api attribute name.
-
 
 ##### **Bug** #####
 Textarea outside modal
@@ -402,6 +400,12 @@ Comment section beloz modal footer
 Textarea of second modal can not retreive data from the previous modal
 ##### **(Potential) Corrections** #####
 jQuery>siblings
+
+##### **Bug** #####
+/workspace/Speranza/app.py:228: DeprecationWarning: update is deprecated. Use replace_one, update_one or update_many instead.
+  mongo.db.comments.update({
+##### **(Potential) Corrections** #####
+To be updated
 
 
 [[Back to top]](#table-of-contents)
