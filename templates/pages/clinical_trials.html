@@ -3,9 +3,18 @@
 
     <h1>Clinical Trials</h1>
 
-    <div class="container-fluid">
+    <div class="container-fluid m-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p class="page-intro">Immunotherapy is a type of cancer treatment that helps your immune system fight cancer. The immune system helps your body fight infections and other diseases. It is made up of white blood cells and organs and tissues of the lymph system.Immunotherapy is a type of biological therapy. <a class="source-link" href="https://www.cancer.gov/about-cancer/treatment/types/immunotherapy#which-cancers-are-treated-with-immunotherapy">[1]</a></p>
+                <p>We have <strong>{{count}}</strong> trials available for you.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col text-center">
                 <form class="form-inline mb-5" method="POST" action="{{url_for('clinical_trials')}}">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search keyword" aria-label="Search keywords" name="search" value="">
                     <button class="btn my-2 my-sm-0 adjust-right" type="submit">Search</button>

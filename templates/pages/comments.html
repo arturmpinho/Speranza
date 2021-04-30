@@ -7,6 +7,7 @@
         </div>
         <div class="card-body">
             <p class="card-text">
+                
                 {% for comment in comments %}
                     {% if public %}
                         {% if comment.trial_id == trial.id %}

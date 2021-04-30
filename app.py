@@ -6,6 +6,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bravado.client import SwaggerClient
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.urls import url_parse
 if os.path.exists("env.py"):
     import env
 
@@ -108,34 +109,42 @@ def clinical_trials():
         search = "cancer&immunotherapy&"+request.form.get('search')
 
         trials = client.trials.searchTrials(
-            q=search).result()
+            q=search, per_page=100).result()
+
+        count = trials['total_count']
 
         if not session.get('user'):
             return render_template('pages/clinical_trials.html',
-                                    trials=trials, search=search)
+                                    trials=trials, search=search, count=count)
         else:
             my_trials = mongo.db.trials.find({'user_id': session.get('user')})
             added_trials = []
             for trial in my_trials:
                 added_trials.append(trial['id'])
             return render_template('pages/clinical_trials.html', trials=trials,
-                                    added_trials=added_trials, search=search, comments=comments, public=True)
+                                    added_trials=added_trials, search=search, comments=comments, count=count, public=True)
 
     elif not session.get('user'):
         trials = client.trials.searchTrials(
-            q='immunotherapy&cancer').result()
+            q='immunotherapy&cancer', per_page=100).result()
 
-        return render_template('pages/clinical_trials.html', trials=trials)
+        count = trials['total_count']
+
+        return render_template('pages/clinical_trials.html',
+        trials=trials, count=count)
 
     else:
         trials = client.trials.searchTrials(
-            q='immunotherapy&cancer').result()
+            q='immunotherapy&cancer', per_page=100).result()
+
+        count = trials['total_count']
+
         my_trials = mongo.db.trials.find({'user_id': session.get('user')})
         added_trials = []
         for trial in my_trials:
             added_trials.append(trial['id'])
         return render_template('pages/clinical_trials.html', trials=trials,
-                                added_trials=added_trials, comments=comments, public=True)
+                                added_trials=added_trials, comments=comments, count=count, public=True)
 
 
 @app.route('/add_trial/', methods=['GET', 'POST'])
@@ -223,19 +232,13 @@ def edit_reviews(comment_id):
                 'user_comments': request.form.get('user_comments')
                 }
 
-        print(update_comment)
-
         mongo.db.comments.update({
             "_id": ObjectId(comment_id)}, update_comment)
 
         flash('Review successfully updated!')
+        return redirect(url_for('clinical_trials'))
 
     return render_template('pages/edit_reviews.html', comment=comment_to_edit)
-
-
-@app.route('/reviews', methods=['GET', 'POST'])
-def reviews():
-    return render_template('pages/reviews.html')
 
 
 @app.route('/logout')
