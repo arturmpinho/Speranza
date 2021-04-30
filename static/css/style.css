@@ -129,6 +129,16 @@ h1{
     color: #A9A9A9;
 }
 
+/* Trial detail modal */
+
+.modal-intro {
+    margin-left: 1rem;
+    margin-top: 1rem;
+} 
+.modal-extra-info {
+    margin-left: 1rem;
+}
+
 /* Footer */
 #footer {
     position: static;

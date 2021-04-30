@@ -212,7 +212,6 @@ def add_comment(user_id, trial_id):
     if request.method == 'POST':
         user_comment = request.form.get('user_comment')
         user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
-        print(user)
         comment = {
             'user_id': user_id,
             'trial_id': trial_id,
