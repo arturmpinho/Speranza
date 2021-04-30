@@ -248,6 +248,15 @@ def edit_reviews(comment_id):
     return render_template('pages/edit_reviews.html', comment=comment_to_edit)
 
 
+@app.route('/delete_reviews/<comment_id>', methods=['GET', 'POST'])
+def delete_reviews(comment_id):
+
+    mongo.db.comments.delete_one({"_id": ObjectId(comment_id)})
+
+    return redirect(url_for('clinical_trials'))
+
+
+
 @app.route('/logout')
 def logout():
     # clear session cookies
