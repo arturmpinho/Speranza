@@ -10,6 +10,8 @@ from werkzeug.urls import url_parse
 if os.path.exists("env.py"):
     import env
 
+from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -209,12 +211,17 @@ def remove_trial(trial_id):
 def add_comment(user_id, trial_id):
     if request.method == 'POST':
         user_comment = request.form.get('user_comment')
+        user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
+        print(user)
         comment = {
             'user_id': user_id,
             'trial_id': trial_id,
-            'user_comments': user_comment
+            'user_comments': user_comment,
+            'username': user["fname"],
+            'posted_on': datetime.now(),
         }
         mongo.db.comments.insert_one(comment)
+        flash('Review successfully added!')
     return redirect(url_for('clinical_trials'))
 
 
