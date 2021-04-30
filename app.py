@@ -141,25 +141,12 @@ def clinical_trials():
 @app.route('/add_trial/', methods=['GET', 'POST'])
 def add_trial():
 
-    if not session.get('user'):
-        flash('You can not bookmark a trial prior to sign in. Please log in and try again!')
-        return redirect(url_for('login'))
-
     if request.method == "POST":
-
-        user_trial_id = str(request.form.get(
-            'trial_api_id') + session.get('user'))
-
-        # added_trial = mongo.db.trials.find_one({
-        #     'user_trial_id': user_trial_id})['user_trial_id']
-
-        # print(added_trial)
 
         favourite = {
                 'id': request.form.get('trial_api_id'),
-                'user_id': session.get('user'),
-                'user_trial_id': user_trial_id
-            }
+                'user_id': session.get('user')
+                }
 
         mongo.db.trials.insert_one(favourite)
         flash('Trial added to your favourites!')
@@ -167,8 +154,7 @@ def add_trial():
         return redirect(url_for('clinical_trials'))
 
     return render_template(
-        'pages/add_trial.html', favourite=favourite,
-        user_trial_id=user_trial_id)
+        'pages/add_trial.html', favourite=favourite)
 
 
 @app.route('/my_trials/<user_id>', methods=['GET', 'POST'])
@@ -210,7 +196,6 @@ def remove_trial(trial_id):
     return redirect(url_for('my_trials', user_id=session['user']))
 
 
-
 @app.route('/add_comment/<user_id>/<trial_id>', methods=['GET', 'POST'])
 def add_comment(user_id, trial_id):
     if request.method == 'POST':
@@ -224,23 +209,33 @@ def add_comment(user_id, trial_id):
     return redirect(url_for('clinical_trials'))
 
 
-@app.route('/edit_comment/<user_id>/<comment_id>', methods=['GET', 'POST'])
-def edit_comment(user_id, comment_id):
-    comment_to_edit = ""
+@app.route('/edit_reviews/<comment_id>', methods=['GET', 'POST'])
+def edit_reviews(comment_id):
+
+    comment_to_edit = mongo.db.comments.find_one({
+        "_id": ObjectId(comment_id)})
 
     if request.method == "POST":
-        comment_to_edit = mongo.db.comments.find_one({
-        "user_id": user_id,
-        "_id": ObjectId(comment_id)
-        })
-        trial = comment_to_edit["trial_id"]
-        mongo.db.comments.update({
-            "_id": ObjectId(comment_to_edit)}, {
-                'user_id': user_id,
-                "user_comments": request.form.get('user_comment')
-            })
 
-    return render_template('pages/clinical_trials.html', comment=comment_to_edit, trial=trial)
+        update_comment = {
+                'user_id': session.get('user'),
+                'trial_id': request.form.get('trial_api_id'),
+                'user_comments': request.form.get('user_comments')
+                }
+
+        print(update_comment)
+
+        mongo.db.comments.update({
+            "_id": ObjectId(comment_id)}, update_comment)
+
+        flash('Review successfully updated!')
+
+    return render_template('pages/edit_reviews.html', comment=comment_to_edit)
+
+
+@app.route('/reviews', methods=['GET', 'POST'])
+def reviews():
+    return render_template('pages/reviews.html')
 
 
 @app.route('/logout')

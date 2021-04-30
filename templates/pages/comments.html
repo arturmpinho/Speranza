@@ -1,3 +1,4 @@
+<!-- Comments Section embeeded in Add Trials Modal-->
 {% if session.get('user') %}
 <div class="modal-comments"> 
     <div class="card text-center">
@@ -10,9 +11,9 @@
                     {% if public %}
                         {% if comment.trial_id == trial.id %}
                             {% if comment.user_id == session.get('user') %}
-                                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} 
-                                    <p id="{{ comment._id }}">{{ comment.user_comments }}</p>
-                                    <a type="button" class="btn card-btn mt-auto" id="edit_comment" data-bs-toggle="modal" data-bs-target="edit_comment_modal">
+                                <p class="card-text"><span class="card-text-info"></span>
+                                    <p>{{ comment.user_comments }}</p>
+                                    <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
                                         Edit
                                     </a>
                                     <a href="#" type="button">delete</a>
@@ -24,12 +25,12 @@
                     {% else %}
                         {% if comment.trial_id == trial['items'][0].id %}
                             {% if comment.user_id == user_id %}
-                                <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }} 
-                                    <a href="#" type="button">delete</a> 
-                                    {{ comment._id }}
-                                    <a type="button" class="btn card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#a{{ comment._id }}">
+                                <p class="card-text"><span class="card-text-info"></span> 
+                                    <p>{{ comment.user_comments }}</p> 
+                                    <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
                                         Edit
                                     </a>
+                                    <a href="#" type="button">delete</a> 
                                 </p>
                             {% else %}
                                 <p class="card-text"><span class="card-text-info"></span> {{ comment.user_comments }}</p>
@@ -51,7 +52,7 @@
                         {% else %}
                             <input name="trial_id" value="{{ trial['items'][0].id }}" hidden>
                         {% endif %}
-                        <textarea name="user_comment" id="user_comment_fmodal" cols="100" rows="10"></textarea>
+                        <textarea name="user_comment" class="user_comment" cols="100" rows="10"></textarea>
                     </div>
                     <div class="comments-action">
                         <button class="btn" type="submit">Post</button>
@@ -66,24 +67,3 @@
     </div>                  
 </div>
 {% endif %}
-
-<!-- Second Modal -->
-
-<div class="modal fade" id="edit_comment_modal" tabindex="-1" aria-labelledby="#" aria-hidden="true" >
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit your comment</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="comments_form" action="#" method="POST">
-                    <textarea name="user_comment" id="user_comment_smodal" cols="100" rows="10"></textarea>
-                </form> 
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-secondary" href="#" type="submit" data-bs-dismiss="modal" role="button">Save & Exit</a>
-            </div>
-        </div>
-    </div>
-</div>

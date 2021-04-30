@@ -3,8 +3,13 @@
     <!-- Hero Image -->
     <div class="container-fluid" id="hero-img">
         <div class="d-grid gap-2 d-md-block text-center">
-            <a href="{{ url_for('login') }}" class="homepage-btn" type="button">Log In</a>
-            <a href="{{ url_for('register') }}" class="homepage-btn" type="button">Register</a>
+            {% if session.get('user') %}
+                <a href="{{ url_for('my_trials', user_id=session['user']) }}" class="homepage-btn" type="button">My Trials</a>
+                <a href="{{ url_for('reviews') }}" class="homepage-btn" type="button">Reviews</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="homepage-btn" type="button">Log In</a>
+                <a href="{{ url_for('register') }}" class="homepage-btn" type="button">Register</a>
+            {% endif %}
           </div>
     </div>
     
