@@ -101,7 +101,7 @@ h1{
 }
 
 /* Comments */
-#user_comment {
+.user_comment {
     max-width:95%;
     border-radius: 2rem;
     border-color: #556E71;
