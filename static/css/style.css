@@ -58,9 +58,20 @@ h1{
     padding: 1rem 2rem 1rem 2rem;
 }
 
-/* Homepage quote*/
-#homepage-quote{
+/* Homepage Intro*/
+.homepage-intro{
     font-size: 2rem;
+    text-align:justify;
+}
+
+.source-link{
+    vertical-align: super;
+    font-size: 1rem;
+}
+
+.source-link:hover, .source-link:focus, .source-link:active {
+    text-decoration:underline;
+    color:#556E71;
 }
 
 /* Buttons */
