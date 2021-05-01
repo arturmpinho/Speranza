@@ -9,23 +9,39 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-intro">
-                <p class="card-text"><span class="card-text-info">Country:</span>  {% for t in trial.locations %}
-                    {{ t['name'] }}
-                {% endfor %}</p>
+                {% if trial.locations %}
+                    <p class="card-text"><span class="card-text-info">Country:</span>  
+                        {% for t in trial.locations %}
+                            {{ t['name'] }}
+                        {% endfor %}
+                    </p>
+                {% endif %}
                 <p class="card-text"><span class="card-text-info">Status:</span> {{ trial.status }}</p>
-                <p class="card-text"><span class="card-text-info">Study Phase:</span> {{ trial.study_phase[0] }}</p>
+                {% if trial.study_phase[0] %}
+                    <p class="card-text"><span class="card-text-info">Study Phase:</span> {{ trial.study_phase[0] }}</p>
+                {% endif %}
                 <p class="card-text"><span class="card-text-info">Recruitment Status:</span> {{ trial.status }}</p>
             </div>
             <div class="modal-body">
-                {{ trial.brief_summary }}
+                {% if trial.brief_summary %}
+                    {{ trial.brief_summary }}
+                {% endif %}
             </div>
             <div class="modal-extra-info">
-                <p class="card-text"><span class="card-text-info">Organisation:</span> {% for t in trial.organisations %}
-                    {{ t['name'] }}<br>
-                {% endfor %}</p>
-                <p class="card-text"><span class="card-text-info">Lead Researcher:</span> {% for t in trial.persons %}
-                    {{ t['name'] }}<br>
-                {% endfor %}</p>
+                {% if trial.organisations %}
+                    <p class="card-text"><span class="card-text-info">Organisation:</span> 
+                        {% for t in trial.organisations %}
+                            {{ t['name'] }}<br>
+                        {% endfor %}
+                    </p>
+                {% endif %}
+                {% if trial.persons %}
+                    <p class="card-text"><span class="card-text-info">Lead Researcher:</span> 
+                        {% for t in trial.persons %}
+                            {{ t['name'] }}<br>
+                        {% endfor %}
+                    </p>
+                {% endif %}
                 <p class="card-text"><span class="card-text-info"><a href="{% for t in trial.records %}
                     {{ t['source_url'] }}
                 {% endfor %} }}" target="_blank">Offical link</a></span></p>

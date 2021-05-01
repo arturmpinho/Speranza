@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <p class="page-intro">Immunotherapy is a type of cancer treatment that helps your immune system fight cancer. The immune system helps your body fight infections and other diseases. It is made up of white blood cells and organs and tissues of the lymph system.Immunotherapy is a type of biological therapy. <a class="source-link" href="https://www.cancer.gov/about-cancer/treatment/types/immunotherapy#which-cancers-are-treated-with-immunotherapy">[1]</a></p>
-                <p>We have <strong>{{count}}</strong> trials available for you.</p>
+                <p>We have <strong>{{count}}</strong> {% if count == 1 %} trial {% else %} trials {% endif %} available for you.</p>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
             <div class="col text-center">
                 <form class="form-inline mb-5" method="POST" action="{{url_for('clinical_trials')}}">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search keyword" aria-label="Search keywords" name="search" value="">
-                    <button class="btn my-2 my-sm-0 adjust-right" type="submit">Search</button>
+                    <button class="btn my-2 mt-2 adjust-right" type="submit">Search</button>
                 </form>             
             </div>
         </div>
@@ -31,12 +31,16 @@
                     <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
                     <div class="card-body d-flex flex-column">
                         <h4 class="card-title mb-5">{{ trial.public_title }}</h4>
+                        {% if trial.locations %}
                         <p class="card-text"><span class="card-text-intro">Country:</span>  {% for t in trial.locations %}
                                                 {{ t['name'] }}
                                             {% endfor %}</p>
+                        {% endif %}
                         <p class="card-text"><span class="card-text-intro">Status:</span> {{ trial.status }}</p>
                         <p class="card-text"><span class="card-text-intro">Recruitment Status:</span> {{ trial.status }}</p>
-                        <p class="card-text"><span class="card-text-intro">Study Phase:</span> {{ trial.study_phase[0] }}</p> 
+                        {% if trial.study_phase[0] %}
+                        <p class="card-text"><span class="card-text-intro">Study Phase:</span> {{ trial.study_phase[0] }}</p>
+                        {% endif %}
                         <a type="button" class="btn card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#a{{ trial.id }}">
                             <i class="fas fa-glasses"></i> Check this trial
                         </a>

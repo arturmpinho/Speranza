@@ -61,8 +61,8 @@
                         </div>
                         
                         <div class="modal-footer">
-                            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                             <a href="{{ url_for('remove_trial', trial_id=trial['items'][0].id) }}" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials </a>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><i class="far fa-times-circle"></i> Close</button>
                         </div>
                         </form>
                         {% include 'pages/comments.html' %}
