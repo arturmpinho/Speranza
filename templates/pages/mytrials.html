@@ -6,22 +6,27 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         {% for trial in trials %}
-            <div class="card .col" style="width: 35rem;">
-                <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h4 class="card-title mb-5">{{ trial['items'][0].public_title }}</h4>
-                    <p class="card-text"><span class="card-text-intro">Country:</span>  {% for t in trial['items'][0].locations %}
-                                            {{ t['name'] }}
-                                        {% endfor %}</p>
-                    <p class="card-text"><span class="card-text-intro">Status:</span> {{ trial['items'][0].status }}</p>
-                    <p class="card-text"><span class="card-text-intro">Recruitment Status:</span> {{ trial['items'][0].status }}</p>
-                    <p class="card-text"><span class="card-text-intro">Study Phase:</span> {{ trial['items'][0].study_phase[0] }}</p> 
-                    <a type="button" class="btn card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#a{{ trial['items'][0].id }}">
-                        <i class="fas fa-glasses"></i> Check this trial
-                    </a>
-                
-                </div>
+        <div class="card .col" style="width: 35rem;">
+            <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h4 class="card-title mb-5">{{ trial['items'][0].public_title }}</h4>
+                {% if trial['items'][0].locations %}
+                    <p class="card-text"><span class="card-text-intro">Country:</span>  
+                    {% for t in trial['items'][0].locations %}
+                        {{ t['name'] }}
+                    {% endfor %}</p>
+                {% endif %}
+                <p class="card-text"><span class="card-text-intro">Status:</span> {{ trial['items'][0].status }}</p>
+                <p class="card-text"><span class="card-text-intro">Recruitment Status:</span> {{ trial['items'][0].recruitment_status }}</p>
+                {% if trial['items'][0].study_phase[0] %}
+                <p class="card-text"><span class="card-text-intro">Study Phase:</span> {{ trial['items'][0].study_phase[0] }}</p>
+                {% endif %}
+                <a type="button" class="btn card-btn mt-auto" data-bs-toggle="modal" data-bs-target="#a{{ trial['items'][0].id }}">
+                    <i class="fas fa-glasses"></i> Check this trial
+                </a>
             </div>
+        </div>
+          
 
             <!-- Modal -->
 
@@ -77,6 +82,7 @@
             <h2 class="m-5">My comments</h2>
             {% for comment in comments %}
                 {% if comment.user_id == session['user'] %}
+                    
                 <div class="card m-5">
                     <div class="card-header">
                         {% for trial in all_trials['items'] %}
@@ -86,16 +92,16 @@
                         {% endfor %}
                     </div>
                     <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p>{{comment.user_comments}}</p>
-                        <footer class="blockquote-footer">{{comment.posted_on}}</footer>
-                    </blockquote>
+                        <blockquote class="blockquote mb-0">
+                            <p>{{comment.user_comments}}</p>
+                            <footer class="blockquote-footer">{{comment.posted_on}}</footer>
+                        </blockquote>
                     </div>
                     <div class="card-footer">
-                        <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
+                        <a type="button" class="btn card-btn mt-2" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
                             <i class="fas fa-edit"></i> Edit
                         </a>
-                        <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-auto" type="button">
+                        <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-2" type="button">
                             <i class="far fa-trash-alt"></i> Delete
                         </a> 
                     </div>

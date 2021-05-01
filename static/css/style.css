@@ -11,7 +11,7 @@ body{
     letter-spacing: 0.3rem;
 }
 
-
+/* 
 #main {
     min-height: 100vh !important;
 }
@@ -19,7 +19,7 @@ body{
 
 #block {
     margin-bottom: 30rem;
-}
+} */
 
 a, a:hover, a:focus, a:active {
     text-decoration: none;
@@ -165,11 +165,12 @@ h1{
 
 /* Footer */
 #footer {
+    position: static;
+    left: 0;
+    bottom: 0;
     width: 100%;
     background-color: #556E71;
     color: #FCFCFA;
-    position: absolute;
-    bottom: 0;
 }
 
 .social-links{
