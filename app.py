@@ -86,7 +86,7 @@ def login():
                         {"username": request.form.get(
                             'username').lower()})['_id'])
                     flash("Welcome, {}".format(
-                        request.form.get("username")))
+                        existing_user["fname"].capitalize()))
                     return redirect(url_for(
                         'home', user_id=session['user']))
 
@@ -188,7 +188,7 @@ def my_trials(user_id):
             trial_api = client.trials.searchTrials(q=id).result()
             trials.append(trial_api)
 
-        mongo_comments = mongo.db.comments.find()
+        mongo_comments = mongo.db.comments.find().sort('posted_on', -1)
         comments = []
         for comment in mongo_comments:
             comments.append(comment)
