@@ -228,12 +228,16 @@ def edit_reviews(comment_id):
     comment_to_edit = mongo.db.comments.find_one({
         "_id": ObjectId(comment_id)})
 
+    user = mongo.db.users.find_one({'_id': ObjectId(session.get('user'))})
+
     if request.method == "POST":
 
         update_comment = {
                 'user_id': session.get('user'),
                 'trial_id': request.form.get('trial_api_id'),
-                'user_comments': request.form.get('user_comments')
+                'user_comments': request.form.get('user_comments'),
+                'username': user["fname"],
+                'posted_on': datetime.now(),
                 }
 
         mongo.db.comments.update({
