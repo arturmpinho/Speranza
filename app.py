@@ -183,6 +183,7 @@ def my_trials(user_id):
         comments = []
         for comment in mongo_comments:
             comments.append(comment)
+        
 
         return render_template(
             'pages/mytrials.html', user_id=user_id,

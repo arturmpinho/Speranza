@@ -3,8 +3,8 @@
 
     <h1>My Trials</h1>
 
-    <div class="container-fluid">
-      <div class="row justify-content-center">
+<div class="container-fluid">
+    <div class="row justify-content-center">
         {% for trial in trials %}
             <div class="card .col" style="width: 35rem;">
                 <img src="https://source.unsplash.com/collection/61510941" class="card-img-top">
@@ -71,6 +71,35 @@
             </div>
             
         {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2>My comments</h2>
+
+            {% for comment in comments %}
+                {% if comment.user_id == session['user'] %}
+                <div class="card m-5">
+                    <div class="card-header">
+                        {{comment.user_comments}}
+                    </div>
+                    <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{comment.username}}</p>
+                        <footer class="blockquote-footer">{{comment.posted_on}}</footer>
+                    </blockquote>
+                    </div>
+                    <div class="card-footer">
+                        <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-auto" type="button">
+                            <i class="far fa-trash-alt"></i> Delete
+                        </a> 
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 
