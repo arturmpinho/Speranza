@@ -7,8 +7,8 @@
                 <a href="{{ url_for('clinical_trials', user_id=session['user']) }}" class="homepage-btn" type="button">Clinical Trials</a>
                 <a href="{{ url_for('my_trials', user_id=session['user']) }}" class="homepage-btn" type="button">My Trials</a>
             {% else %}
-                <a href="{{ url_for('login') }}" class="homepage-btn" type="button">Log In</a>
-                <a href="{{ url_for('register') }}" class="homepage-btn" type="button">Register</a>
+                <a href="{{ url_for('register') }}" class="homepage-btn" type="button"><i class="fab fa-wpforms"> </i>Register</a>
+                <a href="{{ url_for('login') }}" class="homepage-btn" type="button"><i class="fas fa-sign-in-alt"></i> Log In</a>
             {% endif %}
           </div>
     </div>

@@ -239,7 +239,7 @@ def edit_reviews(comment_id):
         mongo.db.comments.update({
             "_id": ObjectId(comment_id)}, update_comment)
 
-        flash('Review successfully updated!')
+        flash('Review successfully saved!')
         return redirect(url_for('clinical_trials'))
 
     return render_template('pages/edit_reviews.html', comment=comment_to_edit)
