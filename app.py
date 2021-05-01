@@ -34,8 +34,10 @@ def home():
     Function to load the landing page and get 5 last comments
     """
     last5comments = mongo.db.comments.find().limit(5).sort('posted_on', -1)
+    all_trials = client.trials.searchTrials(
+            q='immunotherapy&cancer', per_page=100).result()
 
-    return render_template('pages/home.html', last5comments=last5comments)
+    return render_template('pages/home.html', last5comments=last5comments, all_trials=all_trials)
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -174,6 +176,9 @@ def my_trials(user_id):
         trials_mdb = mongo.db.trials.find({'user_id': user_id})
         trials = []
 
+        all_trials = client.trials.searchTrials(
+            q='immunotherapy&cancer', per_page=100).result()
+
         for trial in trials_mdb:
             id = str('id:' + ' ' + trial['id'])
             trial_api = client.trials.searchTrials(q=id).result()
@@ -187,9 +192,33 @@ def my_trials(user_id):
 
         return render_template(
             'pages/mytrials.html', user_id=user_id,
-            trials=trials, comments=comments, public=False)
+            trials=trials, comments=comments, public=False, all_trials=all_trials)
 
     return redirect(url_for('login'))
+
+
+@app.route('/view_trial/<trial_id>', methods=['GET', 'POST'])
+def view_trial(trial_id):
+    mongo_comments = mongo.db.comments.find()
+    comments = []
+    for comment in mongo_comments:
+        comments.append(comment)
+
+    search = "cancer&immunotherapy&"+trial_id
+    trials = client.trials.searchTrials(
+        q=search, per_page=100).result()
+    count = trials['total_count']
+
+    if not session.get('user'):
+        return render_template('pages/clinical_trials.html',
+                                trials=trials, search=search, count=count)
+    else:
+        my_trials = mongo.db.trials.find({'user_id': session.get('user')})
+        added_trials = []
+        for trial in my_trials:
+            added_trials.append(trial['id'])
+        return render_template('pages/clinical_trials.html', trials=trials,
+                                added_trials=added_trials, search=search, comments=comments, count=count, public=True)
 
 
 @app.route('/remove_trial/<trial_id>')

@@ -32,10 +32,15 @@
                     {% for comment in last5comments %}
                         <div class="card m-5">
                             <div class="card-header">
-                                {{comment.user_comments}}
+                                {% for trial in all_trials['items'] %}
+                                    {% if trial.id == comment.trial_id %}
+                                        <p><a href="{{ url_for('view_trial', trial_id=trial.id) }}"  >{{ trial.public_title}}</a></p>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                             <div class="card-body">
                             <blockquote class="blockquote mb-0">
+                                <p>{{comment.user_comments}}</p>
                                 {% if session.get('user') %}
                                     <p>{{comment.username}}</p>
                                 {% else %}
