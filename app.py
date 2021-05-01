@@ -151,7 +151,6 @@ def clinical_trials():
 
 @app.route('/add_trial/', methods=['GET', 'POST'])
 def add_trial():
-
     if request.method == "POST":
 
         favourite = {
@@ -255,7 +254,6 @@ def delete_reviews(comment_id):
     return redirect(url_for('clinical_trials'))
 
 
-
 @app.route('/logout')
 def logout():
     # clear session cookies
@@ -264,8 +262,22 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.errorhandler(404)
+def page_not_found(error):
+    error = str(error)
+    return render_template('pages/error.html',
+                           error=error), 404
+
+
+@app.errorhandler(500)
+def server_error(error):
+    error = str(error)
+    return render_template('pages/error.html',
+                           error=error), 500
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             # switch to False before delivering project
-            debug=True)
+            debug=False)

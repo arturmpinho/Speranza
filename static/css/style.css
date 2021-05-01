@@ -153,3 +153,9 @@ h1{
     margin: 1.6rem;
     font-size: 2rem;
 }
+
+/* Error handlers */
+
+.error-icons{
+    color: #556E71;
+} 
