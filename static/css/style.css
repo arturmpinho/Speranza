@@ -11,22 +11,12 @@ body{
     letter-spacing: 0.3rem;
 }
 
-/* 
-#main {
-    min-height: 100vh !important;
-}
-
-
-#block {
-    margin-bottom: 30rem;
-} */
-
 a, a:hover, a:focus, a:active {
     text-decoration: none;
     color: inherit;
 }
 
-h1{
+h1, h2{
     text-align: center;
     margin: 3rem;
     text-transform: uppercase;
@@ -191,11 +181,17 @@ input::-webkit-input-placeholder {
     font-size: 2rem;
 }
 
-/* Error handlers */
+/* Icons */
 
-.error-icons{
+.icons{
     color: #556E71;
 } 
+
+/* My Trials */
+
+#clinical-trials-link {
+    text-decoration: underline;
+}
 
 
 /* Media Queries */
