@@ -152,7 +152,6 @@ def clinical_trials():
 @app.route('/add_trial/', methods=['GET', 'POST'])
 def add_trial():
     if request.method == "POST":
-
         favourite = {
                 'id': request.form.get('trial_api_id'),
                 'user_id': session.get('user')
@@ -280,4 +279,4 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             # switch to False before delivering project
-            debug=False)
+            debug=True)
