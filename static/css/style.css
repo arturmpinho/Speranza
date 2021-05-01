@@ -33,6 +33,15 @@ h1{
     font-size: min(max(3rem, 7vw), 5rem);
 }
 
+.nav-link {
+    margin-left: 1rem;
+}
+
+.navbar-toggler {
+    margin-right: 1rem;
+    font-size: 1.6rem;
+}
+
 /* Homepage Hero Image */
 #hero-img{
     background: url('https://source.unsplash.com/yg1Zayn0Few/1600x900');
@@ -159,3 +168,12 @@ h1{
 .error-icons{
     color: #556E71;
 } 
+
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+    .navbar-toggler {
+        font-size: 2.5rem;
+    }
+}
