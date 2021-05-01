@@ -1,26 +1,25 @@
 <!-- Comments Section embeeded in Add Trials Modal-->
 {% if session.get('user') %}
 <div class="modal-comments"> 
-    <div class="card text-center">
+    <div class="card-item text-center">
         <div class="card-header">
           Comments/Reviews
         </div>
-        <div class="card-body">
+        <div class="card-body m-3">
             <p class="card-text">
-                
                 {% for comment in comments %}
                     {% if public %}
                         {% if comment.trial_id == trial.id %}
                             {% if comment.user_id == session.get('user') %}
-                                <p class="card-text"><span class="card-text-info">{{ comment.username }}:</span>
+                                <p class="card-text mt-5"><span class="card-text-info">{{ comment.username }}:</span>
                                     {{ comment.user_comments }} <span class="posted_on">@{{ comment.posted_on }}</span>
-                                    <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </a>
-                                    <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-auto" type="button">
-                                        <i class="far fa-trash-alt"></i> Delete
-                                    </a>
                                 </p>
+                                <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-auto" type="button">
+                                    <i class="far fa-trash-alt"></i> Delete
+                                </a>
                             {% else %}
                                 <p class="card-text"><span class="card-text-info">{{ comment.username }}:</span> {{ comment.user_comments }} <span class="posted_on">@{{ comment.posted_on }}</span></p>
                             {% endif %}
@@ -28,15 +27,15 @@
                     {% else %}
                         {% if comment.trial_id == trial['items'][0].id %}
                             {% if comment.user_id == user_id %}
-                                <p class="card-text"><span class="card-text-info">{{ comment.username }}:</span> 
+                                <p class="card-text mt-5"><span class="card-text-info">{{ comment.username }}:</span> 
                                     {{ comment.user_comments }} <span class="posted_on">@{{ comment.posted_on }}</span>
-                                    <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </a>
-                                    <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-auto" type="button">
-                                        <i class="far fa-trash-alt"></i> Delete
-                                    </a> 
                                 </p>
+                                <a type="button" class="btn card-btn mt-auto" id="edit_comment" href="{{url_for('edit_reviews', comment_id=comment._id)}}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a href="{{ url_for('delete_reviews', comment_id=comment._id) }}" class="btn card-btn mt-auto" type="button">
+                                    <i class="far fa-trash-alt"></i> Delete
+                                </a> 
                             {% else %}
                                 <p class="card-text"><span class="card-text-info">{{ comment.username }}:</span> {{ comment.user_comments }} <span class="posted_on">@{{ comment.posted_on }}</span></p>
                             {% endif %}
@@ -44,7 +43,7 @@
                     {% endif %}
                 {% endfor %}
             </p>
-            <h5 class="card-title">Share your comments and/or experiences with this trial</h5>
+            <h5 class="card-title mt-5">Share your comments and/or experiences with this trial</h5>
             {% if public %}
                 <form id="comments_form" action="{{url_for('add_comment', user_id=session.get('user'), trial_id=trial.id)}}" method="POST">
             {% else %}
