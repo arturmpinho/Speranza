@@ -33,9 +33,11 @@ dir(client)
 @app.route('/')
 def home():
     """
-    Function to load the landing page
+    Function to load the landing page and get 5 last comments
     """
-    return render_template('pages/home.html')
+    last5comments = mongo.db.comments.find().limit(5).sort('posted_on', -1)
+
+    return render_template('pages/home.html', last5comments=last5comments)
 
 
 @app.route('/register', methods=["GET", "POST"])

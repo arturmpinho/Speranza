@@ -14,7 +14,7 @@
     </div>
     
     <!-- Text intro -->
-    <div class="container-fluid mt-4">
+    <div class="container-fluid m-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <h1 class=" text-center">Welcome to Speranza, a sharing space for you and your loved ones.</h1>
@@ -22,7 +22,37 @@
             </div>
         </div>
     </div>
-    <div class="card mb-4 w-50 position-relative bottom-0 start-50 translate-middle-x">
+
+    <!-- Last Comments Carousel -->
+    <div class="container">
+        <h2 class="text-center">Last Comments</h2>
+        <div class="row">
+            <div class="col justify-content-center">
+                <div class="carousel-item active">
+                    {% for comment in last5comments %}
+                        <div class="card m-5">
+                            <div class="card-header">
+                                {{comment.user_comments}}
+                            </div>
+                            <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                {% if session.get('user') %}
+                                    <p>{{comment.username}}</p>
+                                {% else %}
+                                    <p>Anonymous User</p>
+                                {% endif %}
+                                <footer class="blockquote-footer">{{comment.posted_on}}</footer>
+                            </blockquote>
+                            </div>
+                        </div>
+                    {% endfor %}    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Quote -->
+    <div class="card m-5 w-50 position-relative bottom-0 start-50 translate-middle-x">
         <div class="card-body">
             <blockquote class="blockquote mb-0 page-intro">
                 <p>"Hope is the life we live, the attitude we carry, the gift we give others. Hope is the energy, the courage and the strength to keep believing in the goodness of life, God and the people around us."</p>
