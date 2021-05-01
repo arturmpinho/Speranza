@@ -98,7 +98,11 @@ h1, h2{
 }
 
 .card-title, .card-text-info{
-    font-weight: 700;
+    font-weight: 600;
+}
+
+.card-title {
+    line-height: 2;
 }
 
 /* Registration Form */
@@ -141,6 +145,10 @@ input::-webkit-input-placeholder {
 
 #user_comment:focus {
     outline: none;
+}
+
+.user_reviews {
+    white-space: pre-line;
 }
 
 .posted_on {
