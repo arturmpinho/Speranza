@@ -88,7 +88,13 @@ h1, h2{
 .btn{
     background-color: #556E71;
     color: #FCFCFA;
-    font-size: 2rem;
+    font-size: 1.6rem;
+}
+
+.btn:hover {
+    color: #FCFCFA;
+    background-color: #5c636a;
+    border-color: #565e64;
 }
 
 /* Trials Cards */
@@ -208,4 +214,9 @@ input::-webkit-input-placeholder {
     .navbar-toggler {
         font-size: 2.5rem;
     }
+
+    .btn{
+        font-size: 2rem;
+    }
+    
 }
