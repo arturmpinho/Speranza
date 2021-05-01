@@ -33,9 +33,7 @@
             <div class="modal fade" id="a{{ trial['items'][0].id }}" tabindex="-1" aria-labelledby="{{ trial['items'][0].id }}" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
-                        <form method="POST" action="#">
                         <div class="modal-header">
-                            <input name="trial_api_id" value="{{ trial.id }}" hidden>
                             <h2 class="modal-title">{{ trial['items'][0].public_title }}</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -69,7 +67,6 @@
                             <a href="{{ url_for('remove_trial', trial_id=trial['items'][0].id) }}" class="btn"><i class="fas fa-heart-broken"></i> Remove from My Trials </a>
                             <button type="button" class="btn" data-bs-dismiss="modal"><i class="far fa-times-circle"></i> Close</button>
                         </div>
-                        </form>
                         {% include 'pages/comments.html' %}
                     </div>
                 </div>

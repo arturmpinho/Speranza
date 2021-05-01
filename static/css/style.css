@@ -121,6 +121,15 @@ h1{
     background-position: center;
 }
 
+input,
+input::-webkit-input-placeholder {
+    font-size: 1.4rem;
+} 
+
+.input-group-text {
+    font-size: 1.6rem;
+}
+
 /* Toast */
 .toast {
     z-index: 99999;
@@ -161,6 +170,10 @@ h1{
 } 
 .modal-extra-info {
     margin-left: 1rem;
+}
+
+.modal-header {
+    align-items: flex-start;
 }
 
 /* Footer */

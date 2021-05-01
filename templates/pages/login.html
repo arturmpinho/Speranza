@@ -3,31 +3,33 @@
 
     <h1 class="text-align-center">Log In</h1>
 
-    <div class="container">
-        <div class="row m-5 offset-3">
-            <form class="card mb-3" method="POST" action="{{ url_for('login') }}">
-                <div class="card-img-top" id="reg-form"> </div>
-                <div class="card-body">
-                    <!-- Username -->
-                    <div class="row">
-                        <div class="input-group col-form-label col-form-label-lg">
-                            <span class="input-group-text">Username</span>
-                            <input type="text" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" aria-label="username" class="form-control" required>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <form class="card mb-3" method="POST" action="{{ url_for('login') }}">
+                    <div class="card-img-top" id="reg-form"> </div>
+                    <div class="card-body">
+                        <!-- Username -->
+                        <div class="row">
+                            <div class="input-group col-form-label col-form-label-lg">
+                                <span class="input-group-text">Username</span>
+                                <input type="text" name="username" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" aria-label="username" class="form-control" required>
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="row">
+                            <div class="input-group col-form-label col-form-label-lg"> 
+                                <span class="input-group-text">Password</span>
+                                <input type="password" name="password" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" aria-label="password" class="form-control" required>                            
+                            </div>
+                        </div>
+                        <!-- Log In -->
+                        <div class="row">
+                            <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Log In</button>
                         </div>
                     </div>
-                    <!-- Password -->
-                    <div class="row">
-                        <div class="input-group col-form-label col-form-label-lg"> 
-                            <span class="input-group-text">Password</span>
-                            <input type="password" name="password" minlength="6" maxlength="30" pattern="^[a-zA-Z0-9]{5,15}$" aria-label="password" class="form-control" required>                            
-                        </div>
-                    </div>
-                    <!-- Log In -->
-                    <div class="row">
-                        <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i> Log In</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     <div class="row">
