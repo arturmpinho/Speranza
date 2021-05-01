@@ -116,6 +116,8 @@ def clinical_trials():
             q=search, per_page=100).result()
 
         count = trials['total_count']
+        if count > 100:
+            count = 100
 
         if not session.get('user'):
             return render_template('pages/clinical_trials.html',
@@ -142,6 +144,8 @@ def clinical_trials():
             q='immunotherapy&cancer', per_page=100).result()
 
         count = trials['total_count']
+        if count > 100:
+            count = 100
 
         my_trials = mongo.db.trials.find({'user_id': session.get('user')})
         added_trials = []
@@ -208,6 +212,8 @@ def view_trial(trial_id):
     trials = client.trials.searchTrials(
         q=search, per_page=100).result()
     count = trials['total_count']
+    if count > 100:
+            count = 100
 
     if not session.get('user'):
         return render_template('pages/clinical_trials.html',
@@ -245,7 +251,7 @@ def add_comment(user_id, trial_id):
             'trial_id': trial_id,
             'user_comments': user_comment,
             'username': user["fname"],
-            'posted_on': datetime.now(),
+            'posted_on': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         }
         mongo.db.comments.insert_one(comment)
         flash('Review successfully added!')
@@ -262,16 +268,15 @@ def edit_reviews(comment_id):
 
     if request.method == "POST":
 
-        update_comment = {
+        update_comment = {"$set": {
                 'user_id': session.get('user'),
                 'trial_id': request.form.get('trial_api_id'),
                 'user_comments': request.form.get('user_comments'),
                 'username': user["fname"],
-                'posted_on': datetime.now(),
-                }
+                'posted_on': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                }}
 
-        mongo.db.comments.update({
-            "_id": ObjectId(comment_id)}, update_comment)
+        mongo.db.comments.update_one(comment_to_edit, update_comment)
 
         flash('Review successfully saved!')
         return redirect(url_for('clinical_trials'))
