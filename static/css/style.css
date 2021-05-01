@@ -138,6 +138,10 @@ h1{
     color: #A9A9A9;
 }
 
+.blockquote {
+    font-size: 1.6rem;
+}
+
 /* Trial detail modal */
 
 .modal-intro {
