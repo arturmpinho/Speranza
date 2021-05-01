@@ -6,11 +6,9 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from bravado.client import SwaggerClient
 from werkzeug.security import generate_password_hash, check_password_hash
-from werkzeug.urls import url_parse
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
-
-from datetime import datetime
 
 
 app = Flask(__name__)
