@@ -51,6 +51,12 @@ input:focus, textarea:focus, select:focus,
     font-size: 1.6rem;
 }
 
+/* Flash messages */
+
+#flash-messages {
+    font-size: 1.6rem;
+}
+
 /* Homepage Hero Image */
 #hero-img{
     background: url('https://source.unsplash.com/yg1Zayn0Few/1600x900');

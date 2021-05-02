@@ -11,7 +11,7 @@
                         <span class="input-group-text">Review</span>
                         <input type="text" name="user_id" value="{{ comment.user_id }}" hidden>
                         <input type="text" name="trial_api_id" value="{{ comment.trial_id }}" hidden>
-                        <textarea id="textarea-comment" class="form-control user_comment user_reviews" aria-label="With textarea" name="user_comments">{{ comment.user_comments }}</textarea>
+                        <textarea id="textarea-comment" class="form-control user_comment user_reviews" aria-label="With textarea" name="user_comments" required>{{ comment.user_comments }}</textarea>
                     </div>
                     <div class="input-group justify-content-center">
                         <button class="btn" type="submit">Save/Close</button>

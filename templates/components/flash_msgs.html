@@ -2,7 +2,7 @@
   {% if messages %}
     {% for message in messages %}
       <section>
-        <div class="toast position-fixed top-0 end-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast position-fixed top-0 end-0 p-3" id="flash-messages" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
             <img src="{{ url_for('static', filename='images/speranza_logo.png') }}" width="60" height="60" class="rounded me-2" alt="Speranza logo">
             <strong class="me-auto">Speranza</strong>
