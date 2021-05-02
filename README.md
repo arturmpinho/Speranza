@@ -231,6 +231,8 @@ The page retreives the user comment within a textarea that the user chose to edi
 
 * Error Handlers: Allow user to navigate back to the homepage in case of a 404 or 500 errors.
 
+* Randomized [Unsplash](https://source.unsplash.com/ 'Unsplash') pictures from my [Clinical Trials Public Collection](https://unsplash.com/collections/61510941/clinical-trials 'Unsplash'): Gives the clinical trials cards a random picture from that collection, allowing the user to be less scared about the medical terms displayed that might scare the user of trying to interact with the website and community.
+
 [[Back to top]](#table-of-contents)
 
 <a></a>
