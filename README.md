@@ -147,7 +147,7 @@ The icons used are self-explanatory and aid the navigation of the user, bringing
 
 #### Structure
 
-The structure of this website will be quite simple as the main focus is on the data handling. Therefore, the website will consist of mainly 3 pages, the Landing Page, the Clinical Trials and the User's Dashboard page.
+The structure of this website will be quite simple as the main focus is on the data handling. Therefore, the website will consist of mainly 3 pages, the Landing Page, the Clinical Trials and the User's Dashboard page, as know as "My Trials & Reviews".
 
 ##### Navigation bar and Footer
 Throuhgout the entire website, the user will constantly have access to the Navigation bar, displaying according to the need the necessary sections. 
@@ -155,26 +155,34 @@ Throuhgout the entire website, the user will constantly have access to the Navig
 Concerning the footer, it will display some contact information and any other less relevant content.
 
 ##### Landing Page
-The Landing page will showcase the immunotherapy as the future of medecine with a brief introduction. Also, an inspirational sentence will give the user the proper perception of the webpage intent.
+The Landing page will showcase the immunotherapy as the future of cancer fighting with a brief introduction and promoting the website as a safe space for the community to share their experiences. Also, an inspirational sentence will give the user the proper perception of the webpage intent.
 
-Below, the user will be able to see the most recent clinical trials, but without accessing all the details. If the user wants to see more details, they will have to properly register in order to acess the entire set of clinical trials and the corresponding details.
+Below, the user will be able to see the most recent comments to the clinical trials. If the user wants to participate, they will have to properly register afterwards in order to acess the entire set of clinical trials with the comments section feature available.
 
-Also, on top of the landing page, considering the recurrent users, two call-to-action buttons will be displayed to improve the navigation.
+Also, on top of the landing page, two call-to-action buttons will be displayed to transmit the user the right perception of the need to create a user account to be able to access the full features of the webisite. 
 
 ##### User's authentication
-The user's authentication method used on this website is based on the corresponding lesson of the [Code Institute](https://codeinstitute.net/ "Code Institue") Full Stack Software Development Course.
-
+The user's authentication method used on this website is adapted from the corresponding lesson of the [Code Institute](https://codeinstitute.net/ "Code Institue") Full Stack Software Development Course.
 
 ##### Clinical Trials
-After a user is registered and logged in, it will have full access to the entire set of clinical trials, powered by a search feature in order to easily find the most suitable clinical trial for its needs.
+After a user is registered and logged in, it will not only have full access to the entire set of clinical trials but also access the comments section per trial.
+
+Whilst the user is not registered/logged in, he can only access the general information but will not be able to participate in the discussions.
+
+This page is powered by a search feature in order to easily find the most suitable clinical trial for its needs.
 
 All the clinical trials will be displayed as cards that will include an icon to shortlist the clinical trial or a trash bin icon if the user wants to remove it from through this page and not through its own dashboard.
 
-##### User's Dashboard
-The user's dashboard will only display the shorlisted clinical trials, including as well the search feature in case it is needed.
+##### My Trials & Comments (User's Dashboard)
+The user's dashboard will display the shorlisted clinical trials, as well as all the contributions that the user gave to the community.
 
-##### Comments Sections
+##### Comments Section
 The comments section will only be displayd when the user is logged in, and will be available through a modal where all the comments for any given clinical trial will be displayed, sorted by date (newest first).
+
+#### Edit Comments/Reviews
+A simple edit page as been created during the development process in order to tackle the difficulties originated by having an edit section in a second modal.
+The page retreives the user comment within a textarea that the user chose to edit, giving him the option to edit the comment in a simple efficient way.
+
 
 [[Back to top]](#table-of-contents)
 
