@@ -91,9 +91,9 @@ As a user I aim for:
 As a user, I want to:
 * Get a brief introduction about what is immunotherapy.
 * Access the most recent clinical trials available regarding immunotherapy.
-* Shortlist the most interesting clinical trials into my dashboard.
+* Shortlist the most interesting clinical trials into my dashboard and check all my contributions to the community.
 * Share my opinion and see other users comments concerning a specific clinical trial.
-* Access additional info about a certain clinical trial such as: 'recruitment status', 'study phase', 'gender' requirements, amongst others.
+* Access additional info about a certain clinical trial such as: 'recruitment status', 'study phase', 'country' requirements, amongst others.
 
 [[Back to top]](#table-of-contents)
 
@@ -113,6 +113,8 @@ As a user, I want to:
 * External links must open in a new tab.
 * Easy interaction with other users.
 * Proper feedback handling an error.
+* See and edit my comments in an easy way.
+* Access a specific clinical trial comment section easily.
 
 [[Back to top]](#table-of-contents)
 
@@ -121,12 +123,10 @@ As a user, I want to:
 ### **Company Goals**
 
 * Provide healthcare patients, their family and firends, with the necessary information about clinical trials working with immunotherapy.
-
 * Give doctors an easy way to look for potential clinical trials to recommend their patients.
-
 * Advocate online for the immunotherapy approach as the future of medicine.
-
 * Provide a safe space for users to share their stories and experiences in regard to a specific clinical trial.
+* Engage the community in active discussions and in sharing their experiences/testimonies.
 
 
 [[Back to top]](#table-of-contents)
