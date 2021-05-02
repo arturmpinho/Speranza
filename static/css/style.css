@@ -22,6 +22,14 @@ h1, h2{
     text-transform: uppercase;
 }
 
+input:focus, textarea:focus, select:focus,
+.form-control:focus{
+    outline: none;
+    border-color: #556E71;
+    box-shadow: none;
+}
+
+
 /* Navigation Bar */
 .navbar{
     background-color: #556E71;
@@ -146,11 +154,6 @@ input::-webkit-input-placeholder {
     border-radius: 2rem;
     border-color: #556E71;
     border-width: 0.5rem;
-    text-indent: 1rem;
-}
-
-#user_comment:focus {
-    outline: none;
 }
 
 .user_reviews {
@@ -164,6 +167,11 @@ input::-webkit-input-placeholder {
 
 .blockquote {
     font-size: 1.6rem;
+}
+
+#textarea-comment {
+    min-height: 30vh;
+    overflow-y: scroll;
 }
 
 /* Trial detail modal */
@@ -203,7 +211,7 @@ input::-webkit-input-placeholder {
 
 /* My Trials */
 
-#clinical-trials-link {
+.interal-link {
     text-decoration: underline;
 }
 

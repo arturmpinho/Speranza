@@ -144,8 +144,6 @@ def clinical_trials():
             q='immunotherapy&cancer', per_page=100).result()
 
         count = trials['total_count']
-        if count > 100:
-            count = 100
 
         my_trials = mongo.db.trials.find({'user_id': session.get('user')})
         added_trials = []

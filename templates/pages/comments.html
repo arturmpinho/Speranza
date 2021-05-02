@@ -56,7 +56,11 @@
                         {% else %}
                             <input name="trial_id" value="{{ trial['items'][0].id }}" hidden>
                         {% endif %}
-                        <textarea name="user_comment" class="user_comment" cols="100" rows="10"></textarea>
+                        <!-- <textarea name="user_comment" class="user_comment" cols="100" rows="10"></textarea> -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Review</span>
+                            <textarea class="user_comment" name="user_comment" cols="100" rows="10"></textarea>
+                        </div>
                     </div>
                     <div class="comments-action">
                         <button class="btn" type="submit"><i class="fas fa-paper-plane"></i> Post</button>
