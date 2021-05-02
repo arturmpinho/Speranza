@@ -66,7 +66,7 @@ def register():
         session['user'] = str(mongo.db.users.find_one(
             {"username": request.form.get('username').lower()})['_id'])
         flash('Registration Successful!')
-        return redirect(url_for('my_trials', user_id=session['user']))
+        return redirect(url_for('home', user_id=session['user']))
 
     return render_template('pages/register.html')
 
@@ -104,7 +104,7 @@ def login():
 @app.route('/clinical_trials', methods=["GET", "POST"])
 def clinical_trials():
 
-    mongo_comments = mongo.db.comments.find()
+    mongo_comments = mongo.db.comments.find().sort('posted_on', -1)
     comments = []
     for comment in mongo_comments:
         comments.append(comment)
@@ -201,7 +201,7 @@ def my_trials(user_id):
 
 @app.route('/view_trial/<trial_id>', methods=['GET', 'POST'])
 def view_trial(trial_id):
-    mongo_comments = mongo.db.comments.find()
+    mongo_comments = mongo.db.comments.find().sort('posted_on', -1)
     comments = []
     for comment in mongo_comments:
         comments.append(comment)
