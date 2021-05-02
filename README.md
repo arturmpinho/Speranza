@@ -327,6 +327,129 @@ The page retreives the user comment within a textarea that the user chose to edi
 | Shortlist the most interesting clinical trials into my dashboard and check all my contributions to the community 	|   clinical_trials.html <br> add_trial.html <br> mytrials.html   |  When the user notices a clinical trial of interest, this trial can be added to the user's favourites clicking on the 'Add to favourites' button in each clinical trial modal. This trial is automatically added to the user's dashboard that can be checked under the 'My Trials & Reviews' page. If the user is not authenticated or registered, the add to favourites feature is not displayed. The same goes for the comments/reviews (see below) which share the page with the 'favourites'. When these are non-existant, the user sees a message redirecting them to the Clinical Trials page so they can shortlist a trial.  | In order to meet this critera, I have made available an "Add to Favourites" button in each clinical trials modal. After this is done, the user can navigate to "My Trials & Reviews" in order to consult these. Also, when the user has no more interest in the trial, removal is possible. The comments added, as per below User Story, function in a similar way and are displayed below the shorlist of the clinical trials.   | I have picked several trials and add them to my favourites. These are well displayed in "My Trials & Reviews" page and able to access the trials information as if in the "Clinical Trials" page. The comments generated, if any, are also displayed chronologically in this page.    |   1- User can shortlist all the trials. <br> 2- User can see all 'favourites' in one page. <br> 3- User Comments are all displayed in one place.  |   The test passes all the requirements.    |
 | Share and edit my opinions and see other users comments/reviews concerning a specific clinical trial 	|   clinical_trials.html <br> add_trial.html <br> mytrials.html <br> comments.html <br> edit_reviews <br> home.html   |  If the user wants to contribute to the community, he can do so via de comment section available in the modals of each clinical trial. All the comments are then available to all registered users and the last 5 of all users available as a preview in the home page. In the 'My Trials & Reviews' page the user can find all the contributions done to date.	|   To comply with this user story, I have made available a comment section in the 'add_trial modal' composed by a textarea element and a 'Post' button. Moreover, in the modal, the user can read all other users, as well as its own, contributions in each specific trial above the textarea. When a contribution is posted, it is 'saved' in the user's "My Trials & Reviews" page. Non authenticated user can only get a sneak peek of other user's comments in the homepage, where the last 5 are displayed, but can not interact with the other users. If authenticated, the user can post comments/reviews in every trial of interest. If the user thinks that any of its own comments need to be edited, he can access the editing page by pressing the 'edit' button present next to every own comment (deletion is also always possible on the same moments the edit option is available). Afterwards, the user is redirected to the edit page where the comment can be updated. | Chose several trials of interest and commented on them. Comments are saved and displayed in the modal of corresponding clinical trials and under 'My Reviews' in the 'My Trials and Reviews' page for future consultation.    |   1- User has a specific place to share the contributions per specific trial. <br> 2- User has a dedicated page to edit own comments. <br> 3- Users can benefit from othe users contributions.  	| Test fully meets requirments 	|
 
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+| Navigation & Responsiveness 	| Page(s) 	|  Devices 	| Browsers 	| Test Result 	| Conclusion 	|
+|-	|-	|-	|-	|-	|-	|
+| Test 1  |   home.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools   | Chrome <br> Firefox <br> Opera      | User can easily get a grip of how the navigation is structured as it respects the current standards. Responsiveness is excelent across devices and browsers.      | Pass  |
+| Test 2  |   clinical_trials.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Cards are well arranged and responsiveness is excelent across devices and browsers. Intuitive call-to-action buttons facilitate the navigation and engagement of the users      | Pass   |
+| Test 3  |   add_trials.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Modals are working wihtout any issue and have intuitive call-to-action buttons easing the navigation. Modals respond well across browsers and different devices       | Pass   |
+| Test 4  |   comments.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Textarea within modal does not present any issue and comments/reviews section is easy to read. Responsivness is very good.      | Pass   |
+| Test 5  |   mytrials.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Cards are well arranged, easing the navigation and intuitive call-to-action buttons to support the user. Modals work wihtout any problem. Page and Modals respond well across browsers and different devices       | Pass   |
+| Test 6  |   edit_reviews.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Simple, straight to the point page. User understands 100% the intent of the page. Responsiveness across devices and browsers is excelent       | Pass   |
+| Test 7  |   login.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Simple form with validation working properly. Responds well across multiple browsers and devices       | Pass   |
+| Test 8  |   register.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Simple form with field validation and key placeholders facilitate the user interaction/navigation. Responds well across multiple browsers and devices        | Pass   |
+| Test 9  |   navbar.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Navbar dynamically adjusts to user authentication supporting the navigation. It is present throughout the entire application. Navbar also collapses into an hamburger icon in small and medium devices. Responsivness is excellent in all browsers and devices.       | Pass   |
+| Test 10  |   footer.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Less relevant information held in this component but gives the user the chance to connect with the business via the social links. Great responsivness across devices.       | Pass   |
+| Test 11  |   flash_msgs.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Flash messages give the user immediate feedback assuring the user about the action taken or giving tips. Fundamental piece of a good navigation. It is working properly and responsivness across browsers and devices is extremely good.      | Pass   |
+| Test 12  |   error.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Another fundamental feature of an application is the error handlers. This page guarantees that the user, in case a 404 or 500 error happens, that he can always go back to the homepage. Tested by altering the code and forcing these errors. Working perfectly in all tested devices and browsers.        | Pass   |
+
+*Note:* Bootstrap was used througout the entire application guaranteeing an excelent responsiveness.
+
+---
+
 [[Back to top]](#table-of-contents)
 
 <a></a>
