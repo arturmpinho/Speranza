@@ -211,22 +211,42 @@ The page retreives the user comment within a textarea that the user chose to edi
 
 ### **Existing Features**
 
-#### ***Feature 1***
+* Sharing Comments: Users can share their experiences/testemonials/reviews/opinions with every registered user for any given clinical trials.
 
-#### ***Feature 2***
+* Last 5 Comments Preview: Gives every user a sneak peek about the ongoing discussions within the community making them wanting to participate and be part of it.
 
-#### ***Feature 3***
+* Flash Messages: Provides immediate feedback to the user on the CRUD functionalities across the webpage.
 
-#### ***Feature 4***
+* [Open Trials](https://opentrials.net/api.html "Open Trials") API: Provides the website with all the public information available regarding the clinical trials. 
 
-#### ***Feature 5***
+* User Authentication: Limiting/Providing some users access to website resources.
+
+* Dynamic Navbar: Adaptative Navbar based on User's Authentication.
+
+* Clinical Trials Shortlist: Provides the user with a direct access to the trails bookmarked as favourites for an easier access to the discussions.
+
+* Search Bar: Facilitates the user to find the most relevant clinical trial in order to engage with the community on that specific topic.
+
+* Trials Counter: Gives the user a quick overview of the amount of trials that are potentially relevant.
+
+* Error Handlers: Allow user to navigate back to the homepage in case of a 404 or 500 errors.
 
 [[Back to top]](#table-of-contents)
 
 <a></a>
 
 ### **Future Features**
-* 
+* Comments counter on every clinical trial card for user to assess the activity level of a discussion, visible to all the users. 
+
+* Amount of users that shortlist a specific trial, visible on each specific card to al the users.
+
+* Pagination in Clinical Trials and My Trials & Comments pages, as well as in the Add Trial Modal where comments are displayed as well.
+
+* Automatic cookies deletion after a certain idle time to increase security.
+
+* Request a confirmation about the correctness of the user's action prior deleting a comment or saving a comment edition, or remove clinical trial from the shorlist.
+
+* Counter for number of trials and contributions in user's My Trials & Contributions dashboard.
 
 [[Back to top]](#table-of-contents)
 
