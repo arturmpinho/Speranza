@@ -40,8 +40,10 @@ def home():
 
     all_trials = []
     for comment in last5comments:
-        all_trials.append(client.trials.searchTrials(
-            q=comment["trial_id"]).result())
+        result = client.trials.searchTrials(
+            q=comment["trial_id"]).result()
+        if result ["total_count"] != 0:
+            all_trials.append(result)
 
     return render_template('pages/home.html', last5comments=last5comments, all_trials=all_trials)
 
@@ -187,7 +189,8 @@ def my_trials(user_id):
         for trial in trials_mdb:
             id = str('id:' + ' ' + trial['id'])
             trial_api = client.trials.searchTrials(q=id).result()
-            trials.append(trial_api)
+            if trial_api["total_count"] != 0:
+                trials.append(trial_api)
 
         # My reviews
 
@@ -200,8 +203,9 @@ def my_trials(user_id):
         for comment in comments:
             result = client.trials.searchTrials(
                 q=comment["trial_id"]).result()
-            if result not in all_trials:
-                all_trials.append(result)
+            if result["total_count"] != 0:
+                if result not in all_trials:
+                    all_trials.append(result)
 
         return render_template(
             'pages/mytrials.html', user_id=user_id,
@@ -219,21 +223,23 @@ def view_trial(trial_id):
 
     search = "cancer&immunotherapy&"+trial_id
     trials = client.trials.searchTrials(
-        q=search, per_page=100).result()
-    count = trials['total_count']
-    if count > 100:
-            count = 100
+        q=search).result()
+    if trials["total_count"] != 0:
+        count = trials['total_count']
 
-    if not session.get('user'):
-        return render_template('pages/clinical_trials.html',
-                                trials=trials, search=search, count=count)
+        if not session.get('user'):
+            return render_template('pages/clinical_trials.html',
+                                    search=search, count=count, trials=trials)
+        else:
+            my_trials = mongo.db.trials.find({'user_id': session.get('user')})
+            added_trials = []
+            for trial in my_trials:
+                added_trials.append(trial['id'])
+            return render_template('pages/clinical_trials.html',
+                                    added_trials=added_trials, trials=trials, search=search, comments=comments, count=count, public=True)
     else:
-        my_trials = mongo.db.trials.find({'user_id': session.get('user')})
-        added_trials = []
-        for trial in my_trials:
-            added_trials.append(trial['id'])
-        return render_template('pages/clinical_trials.html', trials=trials,
-                                added_trials=added_trials, search=search, comments=comments, count=count, public=True)
+        flash('Trial not found.')
+        return render_template('pages/clinical_trials.html')
 
 
 @app.route('/remove_trial/<trial_id>')
