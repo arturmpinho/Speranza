@@ -33,9 +33,15 @@ def home():
     """
     Function to load the landing page and get 5 last comments
     """
-    last5comments = mongo.db.comments.find().limit(5).sort('posted_on', -1)
-    all_trials = client.trials.searchTrials(
-            q='immunotherapy&cancer', per_page=100).result()
+    comments = mongo.db.comments.find().limit(5).sort('posted_on', -1)
+    last5comments = []
+    for comment in comments:
+        last5comments.append(comment)
+
+    all_trials = []
+    for comment in last5comments:
+        all_trials.append(client.trials.searchTrials(
+            q=comment["trial_id"]).result())
 
     return render_template('pages/home.html', last5comments=last5comments, all_trials=all_trials)
 
@@ -178,19 +184,24 @@ def my_trials(user_id):
         trials_mdb = mongo.db.trials.find({'user_id': user_id})
         trials = []
 
-        all_trials = client.trials.searchTrials(
-            q='immunotherapy&cancer', per_page=100).result()
-
         for trial in trials_mdb:
             id = str('id:' + ' ' + trial['id'])
             trial_api = client.trials.searchTrials(q=id).result()
             trials.append(trial_api)
 
+        # My reviews
+
         mongo_comments = mongo.db.comments.find().sort('posted_on', -1)
         comments = []
         for comment in mongo_comments:
             comments.append(comment)
-        
+
+        all_trials = []
+        for comment in comments:
+            result = client.trials.searchTrials(
+                q=comment["trial_id"]).result()
+            if result not in all_trials:
+                all_trials.append(result)
 
         return render_template(
             'pages/mytrials.html', user_id=user_id,
