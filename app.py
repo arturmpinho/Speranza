@@ -298,6 +298,8 @@ def logout():
     return redirect(url_for('home'))
 
 
+# Error handlers
+
 @app.errorhandler(404)
 def page_not_found(error):
     error = str(error)
