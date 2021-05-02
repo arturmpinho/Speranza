@@ -329,108 +329,6 @@ The page retreives the user comment within a textarea that the user chose to edi
 
 ---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 | Navigation & Responsiveness 	| Page(s) 	|  Devices 	| Browsers 	| Test Result 	| Conclusion 	|
 |-	|-	|-	|-	|-	|-	|
 | Test 1  |   home.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools   | Chrome <br> Firefox <br> Opera      | User can easily get a grip of how the navigation is structured as it respects the current standards. Responsiveness is excelent across devices and browsers.      | Pass  |
@@ -455,38 +353,25 @@ The page retreives the user comment within a textarea that the user chose to edi
 <a></a>
 
 ### **Debugging**
-#### **Known Bugs and Corrections** ####
 
-##### **Bug** #####
-
-##### **(Potential) Corrections** #####
-https://stackoverflow.com/questions/37270787/uncaught-syntaxerror-failed-to-execute-queryselector-on-document/37271406
-
-##### **Bug** #####
-Get unique trial ID from the API in modal, after displaying API trials with for loop. All trials were getting the exact same trial id from the API.
-##### **(Potential) Corrections** #####
-Jinja2 template -> {trial.id} as value of a hidden input field with trial_id_api attribute name.
-
-##### **Bug** #####
-Textarea outside modal
-##### **(Potential) Corrections** #####
-textarea {max-width:95%;}
-
-##### **Bug** #####
-Form within form not possible
-##### **(Potential) Corrections** #####
-Comment section beloz modal footer
-
-##### **Bug** #####
-Textarea of second modal can not retreive data from the previous modal
-##### **(Potential) Corrections** #####
-jQuery>siblings
-
-##### **Bug** #####
-/workspace/Speranza/app.py:228: DeprecationWarning: update is deprecated. Use replace_one, update_one or update_many instead.
-  mongo.db.comments.update({
-##### **(Potential) Corrections** #####
-To be updated
+| Bugs 	| Description and Fixes |  Sources 	|   Result
+|-	|-	|-	|-	|
+| Some modals are not opening when user clicks on "Check this trial button"	| According to [this](https://stackoverflow.com/questions/37270787/uncaught-syntaxerror-failed-to-execute-queryselector-on-document/37271406 'Stack Overflow') discussion, IDs cannot start with a number, which is the case for some trial IDs provided by the [Open Trials](https://opentrials.net/api.html "Open Trials") API. The suggested and applied fix was to start all the modal IDs with the letter 'a'.  	| [Stack Overflow](https://stackoverflow.com/questions/37270787/uncaught-syntaxerror-failed-to-execute-queryselector-on-document/37271406 'Stack Overflow')	| **Fixed**	|
+|For loop within another for loop in order to get correct comments to the correct trial not working	| By making sure both loops went through a list instead of 1 list and 1 dictionary, the correct comment shows at the corresponding trial	|   N/A	|   **Fixed**	|
+|   Search displaying more than 100 trials	| Due to the limit of the amount of trials that can be displayed per page, in case a user uses a keyword like 'lung' which will retreive more than 100 results, the counter would still catch those above the limit of 100. Therefore, I have used the following if statement to fix this bug: "if count > 100: count = 100", and not mislead the user. | N/A	| **Temporary fix**	|
+| Broken Links coming from the API	| Data coming from the OpenTrials API can be manipulated but not changed. Nonetheless, some of these links are broken, resulting the user to open a non-funtional page.	| N/A	| **Not fixed**. In the future maybe place a warning below the corresponding link in the modal. |
+| Clinical trials cards all display the same picture.   |Images from [Unsplash](https://source.unsplash.com/ 'Unsplash') API are not being randomized transmitting the looks that a placeholder image was left in place. By using Jinja2 templating language, I was able to generate a random number to append to the src of the img   | [Stack Overflow](https://stackoverflow.com/questions/36683951/generate-random-number-with-jinja2 'Stack Overflow') | **Fixed** 	|
+| Footer in the middle of the page.   |When the page does not have enough content, as in the [Log In Page](http://speranza.herokuapp.com/login 'Speranza'), the footer dos not saty at the bottom.	|  N/A	| **Not fixed** 	|
+| Not all trials can be displayed   | OpenTrials API only displays máx. 100 results per page	|[OperTrials API Documentation](https://api.opentrials.net/v1/docs/#!/trials/searchTrials 'Swagger')	| **Not fixed**. To solve this issue, I intend to implement a pagination feature in a future release.	|
+|   Data provided by [Open Trials](https://opentrials.net/api.html "Open Trials") API is not updated    | Data from [Open Trials](https://opentrials.net/api.html "Open Trials") API is not being updated on a regular basis.	|  N/A | **Not fixed**. |
+|   With some comments, the corresponding trial name is not showing	|   This bug was caused by the limit of 100 results per query. When the user comments on a trial he found using various filters, the trial was not found in the general query (limited to the 1st hundred). Instead of the general query, I looped through the comments and for each comment, queried the API data to get that specific trial matching the comment. This way, the query maximum contains 1 result and added these results to a list in case trial was not yet in that list.  	|   N/A	|   **Fixed**  	|
+    
+    all_trials = []
+        for comment in comments:
+            result = client.trials.searchTrials(
+                q=comment["trial_id"]).result()
+            if result not in all_trials:
+                all_trials.append(result)
 
 
 [[Back to top]](#table-of-contents)
