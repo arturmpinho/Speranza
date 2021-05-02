@@ -60,7 +60,7 @@ input:focus, textarea:focus, select:focus,
 /* Homepage Hero Image */
 #hero-img{
     background: url('https://source.unsplash.com/yg1Zayn0Few/1600x900');
-    height: 70vh;
+    height: 80vh;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
