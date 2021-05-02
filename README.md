@@ -240,7 +240,7 @@ The page retreives the user comment within a textarea that the user chose to edi
 
 * Amount of users that shortlist a specific trial, visible on each specific card to al the users.
 
-* Pagination in Clinical Trials and My Trials & Comments pages, as well as in the Add Trial Modal where comments are displayed as well.
+* Pagination in Clinical Trials and My Trials & Comments pages, as well as in the Add Trial Modal where comments are displayed.
 
 * Automatic cookies deletion after a certain idle time to increase security.
 
