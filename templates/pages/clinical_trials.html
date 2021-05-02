@@ -28,7 +28,7 @@
             {% for trial in trials['items'] %}
 
                 <div class="card .col" style="width: 35rem;">
-                    <img src="https://source.unsplash.com/collection/61510941/{{ range(1, 100) | random }}" class="card-img-top">
+                    <img src="https://source.unsplash.com/collection/61510941/{{ range(1, 100) | random }}" alt="Random Image" class="card-img-top">
                     <div class="card-body d-flex flex-column">
                         <h4 class="card-title mb-5">{{ trial.public_title }}</h4>
                         {% if trial.locations %}
