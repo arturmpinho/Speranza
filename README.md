@@ -409,7 +409,7 @@ To clone the project:
 
 1. Sign-in or sign-up to [MongoDB](https://www.mongodb.com/2 'MongoDB') and create a new cluster
     * Within the Sandbox, click the collections button, folowed by a click in Create Database (Add My Own Data) called speranza
-    * Set up the following collections: users, trials and comments [Click here to see the exact Database Structure](#database-structure)
+    * Set up the following collections: users, trials and comments [Click here to see the exact Database Structure](#wireframes-and-db-structure)
     * Under the Security Menu on the left, select Database Access.
     * Add a new database user, and keep the credentials secure
     * Within the Network Access option, add IP Address 0.0.0.0
