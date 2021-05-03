@@ -1,4 +1,5 @@
-# **![Logo](assets/images/speranza_logo.png) SPERANZA**
+![DB Structure](static/images/speranza_logo.png)
+# **SPERANZA**
 
 ![Mokup Image](wireframes/mockup.png)
 
@@ -31,7 +32,7 @@ On top of this, provide registered users to share their stories/testemonies/comm
     
     1.4 [Design Choices](#design-choices)
 
-2. [Wireframes](#wireframes)
+2. [Wireframes and DB structure](#wireframes-and-DB-structure)
 3. [Features](#features)
  
     3.1 [Existing Features](#existing-features)
@@ -49,16 +50,6 @@ On top of this, provide registered users to share their stories/testemonies/comm
     4.4 [Tools](#tools)
 
 5. [Testing and Debugging](#testing-and-debugging)
- 
-    5.1 [Test 1](#)
- 
-    5.2 [Test 2](#)
- 
-    5.3 [Test 3](#)
-
-    5.4 [Test 4](#)
- 
-    5.5 [Test 5](#)
  
 6. [Deployment](#deployment)
 
@@ -188,7 +179,8 @@ The page retreives the user comment within a textarea that the user chose to edi
 ---
 <a></a>
 
-## **Wireframes**
+## **Wireframes and DB Structure**
+[[Back to top]](#table-of-contents)
 
 [Small devices](wireframes/small-devices.png)
 
@@ -196,6 +188,9 @@ The page retreives the user comment within a textarea that the user chose to edi
 
 [Large devices](wireframes/large-devices.png)
 
+![DB Structure](static/images/speranza_dbstructure.png) 
+
+[[Back to top]](#table-of-contents)
 <a></a>
 
 ---
@@ -475,13 +470,12 @@ To clone the project:
  
  Set up the same variables as in your env.py (IP, PORT, SECRET_KEY, MONGO_URI and MONGODB_NAME): 
 
-    ```
     IP = 0.0.0.0
     MONGO_DBNAME = DATABASE_NAME
     MONGO_URI = YOUR_MONGODB_URI
     PORT = 5000
     SECRET_KEY = YOUR_SECRET_KEY
-    ```
+    
 
 1. Click in "Deploy" tab. Scroll down and click "Enable automatic deployment".
 
