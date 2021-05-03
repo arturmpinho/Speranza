@@ -1,6 +1,8 @@
 ![DB Structure](static/images/speranza_logo.png)
 # **SPERANZA**
 
+***To my father, recently diagnosed with a squamous cell carcinoma, that inspired me on pursuing this project with his hope of finding a suitable immunotherapy clinical trial to participate in case the conventional treatment does not erradicate the tumor.***
+
 ![Mockup Image](wireframes/mockup.png)
 
 ---
@@ -512,15 +514,30 @@ To clone the project:
 <a></a>
 
 ### **Credits**
+* All software and applications used to create this website are mentioned above in section [Languages Libraries Frameworks and Tools](#languages-libraries-frameworks and-tools).
+* [MDN WebDocs](https://developer.mozilla.org/ "MDN WebDocs")
 
 #### **Media**
+* You can find all the images sources through the Unslplash collection prepared [here](https://unsplash.com/collections/61510941/clinical-trials "Unsplash").
 
 #### **Content**
+* [OpenTrials](https://opentrials.net/api.html "OpenTrials") article made available [here](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-016-1290-8 "OpenTrials").
 
 [[Back to top]](#table-of-contents)
 
 <a></a>
 
 ### **Acknowledgments**
+To [Stackoverflow](https://stackoverflow.com/ "Stackoverflow") community and to [W3Schools](https://www.w3schools.com/ "W3Schools") for all the content made publicly available.
+
+To [Julian Nash](https://www.youtube.com/channel/UC5_oFcBFlawLcFCBmU7oNZA 'Youtube') for the great tutorial [Working with Jinja templates - Python on the web - Learning Flask Series Pt. 6](https://www.youtube.com/watch?v=mqrbF0qGSLI "Youtube").
+
+To [Paul Walsh](https://github.com/pwalsh 'Github') on the handy [notebook](https://github.com/pwalsh/notebooks/blob/master/opentrials/opentrials.ipynb 'Github') on how to handle the [OpenTrials](https://opentrials.net/api.html "OpenTrials") API.
+
+To my mentor, [Anna_Villanueva](https://github.com/annavillanueva "GitHub"), for all the inputs and guidance throughout this project.
+
+To my friends and family that took time to test the website and for their valuable recommendations and insights.
+
+A special thanks to [Anouk](https://github.com/AnoukSmet/ "GitHub"), for all the support given suring these difficult past months and for all the suggestions and guidance during the implementation of this project.
 
 [[Back to top]](#table-of-contents)
