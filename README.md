@@ -137,6 +137,8 @@ The icons used are self-explanatory and aid the navigation of the user, bringing
 #### Colors
 ![Mockup Image](wireframes/speranza_color_palette.png)
 
+[[Back to top]](#table-of-contents)
+
 #### Structure
 
 The structure of this website will be quite simple as the main focus is on the data handling. Therefore, the website will consist of mainly 3 pages, the Landing Page, the Clinical Trials and the User's Dashboard page, as know as "My Trials & Reviews".
@@ -184,12 +186,15 @@ The page retrieves the user comment within a text area that the user chose to ed
 ## **Wireframes and DB Structure**
 [[Back to top]](#table-of-contents)
 
+### **Wireframes**
+
 [Small devices](wireframes/small-devices.png)
 
 [Medium Devices](wireframes/medium-devices.png)
 
 [Large devices](wireframes/large-devices.png)
 
+### **DB Structure**
 ![DB Structure](static/images/speranza_dbstructure.png) 
 
 [[Back to top]](#table-of-contents)
@@ -521,7 +526,7 @@ To clone the project:
 * You can find all the images sources through the Unslplash collection prepared [here](https://unsplash.com/collections/61510941/clinical-trials "Unsplash").
 
 #### **Content**
-* [OpenTrials](https://opentrials.net/api.html "OpenTrials") article made available [here](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-016-1290-8 "OpenTrials").
+* [OpenTrials](https://opentrials.net/api.html "OpenTrials") and their article made available [here](https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-016-1290-8 "OpenTrials").
 
 [[Back to top]](#table-of-contents)
 
