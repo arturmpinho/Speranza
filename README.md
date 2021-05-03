@@ -296,6 +296,8 @@ The page retrieves the user comment within a text area that the user chose to ed
 * [Free Logo Design](https://www.freelogodesign.org "Free Logo Design")
 * [TinyPNG](https://tinypng.com/ "Tiny PNG")
 * [Favicon](https://favicon.io/favicon-converter/ "Favcicon")
+* [RandomKeygen](https://randomkeygen.com/ "RandomKeygen")
+* [Swagger](https://swagger.io/ "Swagger")
 * [Techsini](http://techsini.com/multi-mockup/ "Techsini")
 * [W3C-Markup-validation](https://validator.w3.org/ "Markup Validator")
 * [W3C-Jigsaw](https://jigsaw.w3.org/css-validator/ "Jigsaw Validator")
@@ -398,7 +400,6 @@ I have created Speranza using [Github](https://github.com/ 'Github') and [Gitpod
 Then, I used commits to git followed by "git push" to my GitHub repository.
 
 This project has been deployed to [Heroku](https://www.heroku.com/ 'Heroku') which was previously connected with the [Speranza Repository in Github](https://github.com/arturmpinho/Speranza 'Speranza') to automatically get all the pushes done in [Github](https://github.com/ 'GitHub'). 
-
 
 To run this project locally, follow the next steps:
 
