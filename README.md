@@ -339,7 +339,20 @@ The page retreives the user comment within a textarea that the user chose to edi
 | Test 11  |   flash_msgs.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Flash messages give the user immediate feedback assuring the user about the action taken or giving tips. Fundamental piece of a good navigation. It is working properly and responsivness across browsers and devices is extremely good.      | Pass   |
 | Test 12  |   error.html   | Acer Spin (laptop) <br> Acer Spin (tablet) <br> Iphone 8 <br> iPhone 6S <br> iPhone 11 Pro <br> Developer Tools     | Chrome <br> Firefox <br> Opera      | Another fundamental feature of an application is the error handlers. This page guarantees that the user, in case a 404 or 500 error happens, that he can always go back to the homepage. Tested by altering the code and forcing these errors. Working perfectly in all tested devices and browsers.        | Pass   |
 
-*Note:* Bootstrap was used througout the entire application guaranteeing an excelent responsiveness.
+<br>
+
+*Note 1:* Bootstrap was used througout the entire application guaranteeing an excelent responsiveness.
+
+*Note 2:* In order to improve the UX, in case that one day a trial is deleted from the API, I wanted to make sure that the user would not face an error preventing him of accessing its dashboard. Therefore I re-arraged the 'View Trial' view and added an else statement in case the result attained is 0.
+
+*Note 3:* After runnig the [Google-Lightouse](https://developers.google.com/web/tools/lighthouse "Google Lighthouse") Tool, I noticed that the Unsplash API, considering the amount of results retreived in the 'Clinical Trials' is having a strong negative impact in the loading performance, especially in mobiles. Thereof, in the future, I intend to save locally all the images of [this](https://unsplash.com/collections/61510941/clinical-trials 'Unsplash') collection in order to enhance the loading time of this page.
+
+![Lighthouse](static/images/clinical_trials_mobile_lighthouse.PNG) 
+
+*Note 4:* The usage of modals came with additional challenges, especially due to the fact of the dynamic IDs. 
+Moreover, when the authenticated user performs an action inside the modal, namely commenting or adding/removing the trial to/from the favourites, the modal closes and redirects the user to the Clinical Trials Pages, not keeping the user inside the modal, which may cause some discomfort. 
+The same goes for when the user performs these same actions, starting from the 'My Trials & Reviews' page. Nontheless, here it is aggravated by the fact that the user is redirected to another page and not to the one he started at.
+Because modals are an excellent visual tool to any website, I would like to keep it. Therefore, in the future I want to deep dive into this issue in order to increase the UX without sacrificing this feature. If in the end this will not be possible, I can make sure all actions have dedicated pages so the redirections won't affect to much the UX.
 
 ---
 
