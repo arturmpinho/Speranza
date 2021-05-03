@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -42,10 +42,11 @@ def home():
     for comment in last5comments:
         result = client.trials.searchTrials(
             q=comment["trial_id"]).result()
-        if result ["total_count"] != 0:
+        if result["total_count"] != 0:
             all_trials.append(result)
 
-    return render_template('pages/home.html', last5comments=last5comments, all_trials=all_trials)
+    return render_template('pages/home.html',
+                           last5comments=last5comments, all_trials=all_trials)
 
 
 @app.route('/register', methods=["GET", "POST"])
@@ -89,14 +90,14 @@ def login():
         if existing_user:
             # check password hash matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session['user'] = str(mongo.db.users.find_one(
-                        {"username": request.form.get(
-                            'username').lower()})['_id'])
-                    flash("Welcome, {}".format(
-                        existing_user["fname"].capitalize()))
-                    return redirect(url_for(
-                        'home', user_id=session['user']))
+                    existing_user["password"], request.form.get("password")):
+                        session['user'] = str(mongo.db.users.find_one(
+                            {"username": request.form.get(
+                                'username').lower()})['_id'])
+                        flash("Welcome, {}".format(
+                            existing_user["fname"].capitalize()))
+                        return redirect(url_for(
+                            'home', user_id=session['user']))
 
             else:
                 # invalid password match
@@ -129,14 +130,15 @@ def clinical_trials():
 
         if not session.get('user'):
             return render_template('pages/clinical_trials.html',
-                                    trials=trials, search=search, count=count)
+                                   trials=trials, search=search, count=count)
         else:
             my_trials = mongo.db.trials.find({'user_id': session.get('user')})
             added_trials = []
             for trial in my_trials:
                 added_trials.append(trial['id'])
             return render_template('pages/clinical_trials.html', trials=trials,
-                                    added_trials=added_trials, search=search, comments=comments, count=count, public=True)
+                                   added_trials=added_trials, search=search,
+                                   comments=comments, count=count, public=True)
 
     elif not session.get('user'):
         trials = client.trials.searchTrials(
@@ -145,7 +147,7 @@ def clinical_trials():
         count = trials['total_count']
 
         return render_template('pages/clinical_trials.html',
-        trials=trials, count=count)
+                               trials=trials, count=count)
 
     else:
         trials = client.trials.searchTrials(
@@ -158,7 +160,8 @@ def clinical_trials():
         for trial in my_trials:
             added_trials.append(trial['id'])
         return render_template('pages/clinical_trials.html', trials=trials,
-                                added_trials=added_trials, comments=comments, count=count, public=True)
+                               added_trials=added_trials, comments=comments,
+                               count=count, public=True)
 
 
 @app.route('/add_trial/', methods=['GET', 'POST'])
@@ -209,7 +212,8 @@ def my_trials(user_id):
 
         return render_template(
             'pages/mytrials.html', user_id=user_id,
-            trials=trials, comments=comments, public=False, all_trials=all_trials)
+            trials=trials, comments=comments,
+            public=False, all_trials=all_trials)
 
     return redirect(url_for('login'))
 
@@ -229,17 +233,19 @@ def view_trial(trial_id):
 
         if not session.get('user'):
             return render_template('pages/clinical_trials.html',
-                                    search=search, count=count, trials=trials)
+                                   search=search, count=count, trials=trials)
         else:
             my_trials = mongo.db.trials.find({'user_id': session.get('user')})
             added_trials = []
             for trial in my_trials:
                 added_trials.append(trial['id'])
             return render_template('pages/clinical_trials.html',
-                                    added_trials=added_trials, trials=trials, search=search, comments=comments, count=count, public=True)
+                                   added_trials=added_trials, trials=trials,
+                                   search=search, comments=comments,
+                                   count=count, public=True)
     else:
         flash('Trial not found.')
-        return render_template('pages/clinical_trials.html')
+        return redirect(url_for('clinical_trials'))
 
 
 @app.route('/remove_trial/<trial_id>')
@@ -334,5 +340,4 @@ def server_error(error):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            # switch to False before delivering project
-            debug=True)
+            debug=False)
