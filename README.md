@@ -382,6 +382,114 @@ The page retreives the user comment within a textarea that the user chose to edi
 
 ## **Deployment**
 
+### Local Deployment
+
+I have created Speranza using [Github](https://github.com/ 'Github') and [Gitpod](https://gitpod.io/ 'Gitpod') to write my code. 
+
+Then, I used commits to git followed by "git push" to my GitHub repository.
+
+This project has been deployed to [Heroku](https://www.heroku.com/ 'Heroku') which was previously connected with the [Speranza Repository in Github](https://github.com/arturmpinho/Speranza 'Speranza') to automatically get all the pushes done in [Github](https://github.com/ 'GitHub'). 
+
+
+To run this project locally, follow the next steps:
+
+This project can be ran locally by following the following steps: ***(
+as I have user used [Gitpod](https://gitpod.io/ 'Gitpod') for development, the next steps are specifi to it. Adjustment may be necessary depending on your IDE. More information about installing packages using pip and virtual environments [here](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)***
+
+
+To clone the project: 
+
+1. From the application's repository, click the "code" button and download the zip of the repository.
+    You can also clone the repository using the following command in your terminal:
+
+    ``` 
+    git clone https://github.com/arturmpinho/Speranza.git
+    ``` 
+
+1. Access the folder in your terminal window and install the application's [required modules](https://github.com/arturmpinho/Speranza/blob/master/requirements.txt) using the following command:
+
+    ```
+    pip3 install -r requirements.txt
+    ```
+
+1. Sign-in or sign-up to [MongoDB](https://www.mongodb.com/2 'MongoDB') and create a new cluster
+    * Within the Sandbox, click the collections button, folowed by a click in Create Database (Add My Own Data) called speranza
+    * Set up the following collections: users, trials and comments [Click here to see the exact Database Structure](#database-structure)
+    * Under the Security Menu on the left, select Database Access.
+    * Add a new database user, and keep the credentials secure
+    * Within the Network Access option, add IP Address 0.0.0.0
+
+1. In your IDE, create your env.py file at the root level of the application, containing the following lines and variables:
+    ```
+    import os
+
+    os.environ.setdefault("IP", "0.0.0.0")
+    os.environ.setdefault("PORT", "5000")
+    os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY")
+    os.environ.setdefault("MONGO_URI", "YOUR_MONGODB_URI")
+    os.environ.setdefault("MONGO_DBNAME", "DATABASE_NAME")
+
+    ```
+
+    Please note that you will need to update the **"YOUR_SECRET_KEY"** with your own secret key, as well as the **YOUR_MONGODB_URI** and **DATABASE_NAME** values with those provided by [MongoDB](https://www.mongodb.com/2 'MongoDB').
+    
+    Tip for your **YOUR_SECRET_KEY**:  you can use a [Password Generator](https://randomkeygen.com/ 'Random Keygen') in order to have a secure secret key.
+
+    It is recommended to use minimum the 'Fort Knox Passwords'.
+
+    To find your **YOUR_MONGODB_URI**, go to your clusters and click on 'connect'. Choose connect your application and copy the link provided. 
+    Don't forget to update the necessary fields such as password and database name.
+
+    If you plan on pushing this application to a public repository, ensure that env.py is added to your .gitignore file in order to safeguard your sensitive information.
+
+1. Run your application locally typing the following command in your terminal. 
+    ```
+    python3 app.py. 
+    ```
+    
+### To deploy your project on Heroku, use the following steps: 
+
+1. Login to your [Heroku](https://www.heroku.com/ 'Heroku') account and create a new app. Preferably, choose the region where you are located. 
+
+1. Ensure the Procfile and requirements.txt files are created and updated in your local repository.  
+
+    Requirements:
+    ```
+    pip3 freeze --local > requirements.txt
+    ```
+    Procfile:
+    ```
+    echo web: python app.py > Procfile
+    ```
+
+1. The Procfile should contain the following line:
+    ```
+    web: python app.py
+    ```
+
+1. Go to your "deployment method"-section and Choose "Github" for automatic deployment.
+
+1. Below, make sure your Github user is selected, and then enter the name of your repository. Click "search". When it finds the repository, then click the "connect" button.
+
+1. Go up and click "settings" and then scroll down and click "Reveal config vars".
+ 
+ Set up the same variables as in your env.py (IP, PORT, SECRET_KEY, MONGO_URI and MONGODB_NAME): 
+
+    ```
+    IP = 0.0.0.0
+    MONGO_DBNAME = DATABASE_NAME
+    MONGO_URI = YOUR_MONGODB_URI
+    PORT = 5000
+    SECRET_KEY = YOUR_SECRET_KEY
+    ```
+
+1. Click in "Deploy" tab. Scroll down and click "Enable automatic deployment".
+
+1. Just beneath, click "Deploy branch". Heroku will now start building the app. 
+
+1. In order to commit your changes to the branch, use git push to push your changes via your IDE.
+
+
 [[Back to top]](#table-of-contents)
 
 ---
