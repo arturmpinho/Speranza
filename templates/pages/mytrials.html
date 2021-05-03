@@ -1,8 +1,6 @@
 {% extends "layout/base.html" %}
 {% block content %}
 
-
-
 <div class="container-fluid">
     <div class="row justify-content-center">
         <h2 class="m-5">MY TRIALS</h2>
@@ -83,12 +81,16 @@
             </div>
         {% endif %}
     </div>
+
+
+    <!-- My Reviews -->
+
     <div class="row justify-content-center">
         <h2 class="m-5">MY REVIEWS</h2>
         <div class="col-12">
            
-                {% for comment in comments %}
-                    {% if comment.user_id == session['user'] %} 
+            {% for comment in comments %}
+                {% if comment.user_id == session['user'] %} 
                     <div class="card m-5">
                         <div class="card-header">
                             {% for trial in all_trials %}
@@ -112,8 +114,9 @@
                             </a> 
                         </div>
                     </div>
-                    {% endif %}
-                {% endfor %}
+                {% endif %}
+            {% endfor %}
+
         </div>
     </div>
 </div>

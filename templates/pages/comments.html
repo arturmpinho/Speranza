@@ -8,6 +8,7 @@
         <div class="card-body m-3">
             <p class="card-text">
                 {% for comment in comments %}
+                    <!-- Variable Public defined to determine if you're coming from clinical trials page or from mytrials page -->
                     {% if public %}
                         {% if comment.trial_id == trial.id %}
                             {% if comment.user_id == session.get('user') %}
