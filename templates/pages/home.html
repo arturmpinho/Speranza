@@ -4,11 +4,11 @@
     <div class="container-fluid" id="hero-img">
         <div class="d-grid gap-2 d-md-block text-center">
             {% if session.get('user') %}
-                <a href="{{ url_for('clinical_trials', user_id=session['user']) }}" class="homepage-btn" type="button"><i class="fas fa-stethoscope"></i>Clinical Trials</a>
-                <a href="{{ url_for('my_trials', user_id=session['user']) }}" class="homepage-btn" type="button"><i class="fas fa-hospital-user"></i>My Trials & Reviews</a>
+                <a href="{{ url_for('clinical_trials', user_id=session['user']) }}" class="homepage-btn btn"><i class="fas fa-stethoscope"></i>Clinical Trials</a>
+                <a href="{{ url_for('my_trials', user_id=session['user']) }}" class="homepage-btn btn"><i class="fas fa-hospital-user"></i>My Trials & Reviews</a>
             {% else %}
-                <a href="{{ url_for('register') }}" class="homepage-btn" type="button"><i class="fab fa-wpforms"> </i>Register</a>
-                <a href="{{ url_for('login') }}" class="homepage-btn" type="button"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                <a href="{{ url_for('register') }}" class="homepage-btn btn"><i class="fab fa-wpforms"> </i>Register</a>
+                <a href="{{ url_for('login') }}" class="homepage-btn btn"><i class="fas fa-sign-in-alt"></i> Log In</a>
             {% endif %}
           </div>
     </div>
@@ -31,7 +31,7 @@
 
     <!-- Last Comments Carousel -->
     <div class="container">
-        <h2 class="text-center">Last Comments</h2>
+        <h2 class="text-center">Last Comments from the community</h2>
         <div class="row">
             <div class="col justify-content-center">
                 <div class="card-item">
